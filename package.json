@@ -1,0 +1,15 @@
+{
+  "name": "prioracle",
+  "version": "1.0.0",
+  "description": "Capstone project for Arnold, Vinit, Randy and Josh from Fullstack Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/arnoldsalas/prioracle"
+  },
+  "author": "",
+  "license": "ISC"
+}
