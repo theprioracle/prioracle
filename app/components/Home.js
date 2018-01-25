@@ -1,5 +1,7 @@
 // app.components/Home.js
 // Landing view for our app!
+// NOTE: Home view is currently just a login screen, could add in 
+// additional views for introducing what our app does.
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
@@ -18,40 +20,37 @@ class Home extends Component {
     this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
   }
 
-  // handleUsernameInputChange
-  // Updates local component state with whatever is currently in username input field
-  handleUsernameInputChange() {
+  // Updates local component state with contents of username input field
+  handleUsernameInputChange(text) {
+    this.setState({ username: text });
+  }
 
+  // Updates local component state with contents of password input field
+  handlePasswordInputChange(text) {
+    this.setState({ password: text });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>$$$ Welcome to Prioracle! $$${"\n\n\n"}</Text>
-        <FormLabel>Username</FormLabel>
+        <Text style={styles.titleText}>P r i o r a c l e{"\n\n\n"}</Text>
+        <FormLabel labelStyle={styles.inputLabel}>Username</FormLabel>
         <FormInput
-          onChangeText={this.handleUsernameInputChange} />
-        <FormLabel>Password</FormLabel>
-        <FormInput />
+          inputStyle={styles.inputText}
+          textAlign={'center'}
+          onChangeText={text => this.handleUsernameInputChange(text)} />
+        <FormLabel labelStyle={styles.inputLabel}>Password</FormLabel>
+        <FormInput
+          inputStyle={styles.inputText}
+          textAlign={'center'}          
+          onChangeText={text => this.handlePasswordInputChange(text)}
+          secureTextEntry={true} />
         <Button
           title='Log In' />
       </View>
     );
   }
 }
-
-// TODO: Remove original dummy component code, keeping here for now
-// const Home = ({ navigation }) => (
-//   <View style={styles.container}>
-//     <Text>$$$ Welcome to Prioracle! $$${"\n\n\n"}</Text>
-//     <FormLabel>Username</FormLabel>
-//     <FormInput />
-//     <FormLabel>Password</FormLabel>
-//     <FormInput />
-//     <Button
-//       title='Log In' />
-//   </View>
-// );
 
 const styles = StyleSheet.create({
   container: { 
@@ -61,13 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#d14f4f'
   },
   titleText: {
-    fontSize: 30
+    fontSize: 35,
+    color: 'white'
   },
-  inputField: {
-    backgroundColor: '#fff',
-    borderColor: 'gray', 
-    borderWidth: 1,
-    height: 40
+  inputLabel: {
+    color: 'white'
+  },
+  inputText: {
+    color: 'white'
   }
 });
 
