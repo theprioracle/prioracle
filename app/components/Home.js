@@ -18,6 +18,7 @@ class Home extends Component {
     };
 
     this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
+    this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
   }
 
   // Updates local component state with contents of username input field
@@ -28,6 +29,11 @@ class Home extends Component {
   // Updates local component state with contents of password input field
   handlePasswordInputChange(text) {
     this.setState({ password: text });
+  }
+
+  // TODO: Process credentials here
+  handleLoginButtonPress() {
+    this.props.navigation.navigate('ListingForm');
   }
 
   render() {
@@ -45,8 +51,12 @@ class Home extends Component {
           textAlign={'center'}          
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
+
+        {/* TODO: Find better way to space these components out */}
+        <Text>{'\n'}</Text>
         <Button
-          title='Log In' />
+          title='Log In'
+          onPress={() => this.handleLoginButtonPress()} />
       </View>
     );
   }

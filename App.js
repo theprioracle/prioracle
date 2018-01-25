@@ -17,7 +17,7 @@ export default RootNavigator = StackNavigator({
   ListingForm: {
     screen: ListingForm,
     navigationOptions: {
-      title: 'Add a New Product Listing'
+      title: 'Add a New Listing'
     }
   }
 });
