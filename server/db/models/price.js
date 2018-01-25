@@ -3,13 +3,13 @@ const db = require('../db');
 
 const Price = db.define('price', {
   algoPrice: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
   },
   scraperPrice: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
   },
   soldPrice: {
-    type: Sequelize.DECIMAL,
+    type: Sequelize.INTEGER,
   },
   metaPrice: {
     type: Sequelize.VIRTUAL,
