@@ -5,6 +5,10 @@
   "private": true,
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/arnoldsalas/prioracle"
+  },
   "devDependencies": {
     "react-native-scripts": "1.10.0",
     "jest-expo": "25.0.0",
