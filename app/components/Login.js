@@ -45,7 +45,6 @@ class Login extends Component {
 
         console.log(email, 'is now logging in...');
 
-        // Navigate to the Home page
         this.props.navigation.navigate('ListingForm');
 
     } catch (error) {
