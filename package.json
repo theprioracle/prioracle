@@ -11,5 +11,15 @@
     "url": "http://www.github.com/arnoldsalas/prioracle"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "koa": "^2.4.1",
+    "koa-static": "^4.0.2",
+    "sequelize": "^4.32.1"
+  },
+  "devDependencies": {
+    "koa-body-parser": "^1.1.2",
+    "koa-morgan": "^1.0.1"
+  }
 }
