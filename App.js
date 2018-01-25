@@ -4,14 +4,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Home from './app/components/Home';
+import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
 
 export default RootNavigator = StackNavigator({
   Main: {
-      screen: Home,
+      screen: Login,
       navigationOptions: {
-        title: 'Prioracle',
+        title: 'Login',
       }
   },
   ListingForm: {
