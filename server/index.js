@@ -7,6 +7,10 @@ const db = require('./db');
 const PORT = process.env.PORT || 8080;
 const app = new Koa();
 
+// TEMP
+const Router = require('koa-router');
+const router = new Router();
+
 module.exports = app;
 
 /**
@@ -27,6 +31,27 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(bodyParser());
+
+  router.get('/users', (ctx) => {
+    ctx.status = 200
+    ctx.body = [{
+      id: 1,
+      text: 'Switch to Koa',
+      completed: true
+    }, {
+      id: 2,
+      text: '???',
+      completed: true
+    }, {
+      id: 3,
+      text: 'Profit',
+      completed: true
+    }]
+  });
+
+  app.use(router.routes());
+  // makes sure a 405 Method Not Allowed is sent
+  app.use(router.allowedMethods())
 
   // auth and api routes
   // app.use('/api', require('./api'));
