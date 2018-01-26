@@ -10,35 +10,38 @@ import Analysis from './app/components/Analysis';
 import { Header } from 'react-native-elements';
 import * as firebase from "firebase";
 
+import store from  './app/store';
+
 export default class App extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    // TEMP: Testing out Firebase for our backend needs
-    var config = {
-      apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
-      authDomain: "prioracle-ad317.firebaseapp.com",
-      databaseURL: "https://prioracle-ad317.firebaseio.com",
-      projectId: "prioracle-ad317",
-      storageBucket: "prioracle-ad317.appspot.com",
-      messagingSenderId: "910431056594"
-    };
 
-    firebase.initializeApp(config);
+    console.log("App component mounted!");
+
+    // TEMP: axios testing
+    // fetch('http://172.16.23.244:8080/users')
+    //   .then(res => res.json())
+    //   .then(users => console.log('users:', users));
+
+    // TEMP: Testing out Firebase for our backend needs
+    // var config = {
+    //   apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
+    //   authDomain: "prioracle-ad317.firebaseapp.com",
+    //   databaseURL: "https://prioracle-ad317.firebaseio.com",
+    //   projectId: "prioracle-ad317",
+    //   storageBucket: "prioracle-ad317.appspot.com",
+    //   messagingSenderId: "910431056594"
+    // };
+
+    // firebase.initializeApp(config);
   }
 
   render() {
     return (
       <View style={styles.container}>
-        {/* <Header
-          outerContainerStyles={styles.headerOuterContainer}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-          backgroundColor='#d14f4f'
-        /> */}
         <RootNavigator />
       </View>
     );
