@@ -24,20 +24,6 @@ class Login extends Component {
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
   }
 
-  componentDidMount() {
-    // TEMP: Testing out Firebase for our backend needs
-    var config = {
-      apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
-      authDomain: "prioracle-ad317.firebaseapp.com",
-      databaseURL: "https://prioracle-ad317.firebaseio.com",
-      projectId: "prioracle-ad317",
-      storageBucket: "prioracle-ad317.appspot.com",
-      messagingSenderId: "910431056594"
-    };
-
-    firebase.initializeApp(config);
-  }
-
   async login(email, pass) {
     try {
         await firebase.auth()
@@ -114,6 +100,12 @@ class Login extends Component {
           title='Sign Up'
           icon={{ name: 'add' }}
           onPress={() => this.handleSignupButtonPress()} />
+        
+        {/* TODO/TEMP: debug button for skipping login */}
+        <Text>{"\n"}</Text>
+        <Button
+          title='DEBUG: Skip login'
+          onPress={() => this.props.navigation.navigate('ListingForm')} />
       </KeyboardAvoidingView>
     );
   }
