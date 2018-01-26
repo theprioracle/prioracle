@@ -17,6 +17,9 @@ const Listing = db.define('listing', {
   status: {
     type: Sequelize.ENUM('active', 'inactive')
   },
+  brand: {
+    type: Sequelize.STRING
+  },
   listedAt: {
     type: Sequelize.DATE,
     defaultValue: Date.now()
