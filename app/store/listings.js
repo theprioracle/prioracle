@@ -1,7 +1,6 @@
 // app/store/listings.js
 
 import axios from 'axios';
-import history from '../history';
 
 /**
  * ACTION TYPES
@@ -23,12 +22,13 @@ const getListingsAction = (listings) => (
 /**
  * THUNK CREATORS
  */
-// TEMP: Initial testing for redux
+// TODO: Initial testing for redux, change URL later
 export const fetchListings = function() {
   return function thunk(dispatch) {
-    return axios.get('/api/listings')
+    return axios.get('http://172.16.23.244:8080/api/users')
       .then(res => res.data)
-      .then(listings => console.log("Fetched listings:", listings));
+      .then(listings => dispatch(getListingsAction(listings)))
+      .catch(err => console.log(err));
   }
 }
 

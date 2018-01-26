@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux'
 import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
@@ -10,7 +11,7 @@ import Analysis from './app/components/Analysis';
 import { Header } from 'react-native-elements';
 import * as firebase from "firebase";
 
-import store from  './app/store';
+import store, { fetchListings } from  './app/store';
 
 export default class App extends Component {
   constructor(props) {
@@ -19,12 +20,9 @@ export default class App extends Component {
 
   componentDidMount() {
 
-    console.log("App component mounted!");
+    console.log("DEBUG: App component mounted!");
 
-    // TEMP: axios testing
-    // fetch('http://172.16.23.244:8080/users')
-    //   .then(res => res.json())
-    //   .then(users => console.log('users:', users));
+    store.dispatch(fetchListings());
 
     // TEMP: Testing out Firebase for our backend needs
     // var config = {
@@ -41,9 +39,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      // <View style={styles.container}>
+      <Provider store={store}>
         <RootNavigator />
-      </View>
+      </Provider>
+      // </View>
     );
   }
 }

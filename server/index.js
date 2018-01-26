@@ -32,7 +32,7 @@ const createApp = () => {
   // body parsing middleware
   app.use(bodyParser());
 
-  router.get('/users', (ctx) => {
+  router.get('/api/users', (ctx) => {
     ctx.status = 200
     ctx.body = [{
       id: 1,

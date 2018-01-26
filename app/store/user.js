@@ -1,7 +1,6 @@
 // app/store/user.js
 
 import axios from 'axios';
-import history from '../history';
 
 /**
  * ACTION TYPES
@@ -23,15 +22,6 @@ const removeUser = () => ({type: REMOVE_USER})
 /**
  * THUNK CREATORS
  */
-
-// TEMP: Initial testing for redux
-export const fetchUsers = function() {
-  return function thunk(dispatch) {
-    return axios.get('/api/users')
-      .then(res => res.data)
-      .then(users => console.log("Fetched users:", users));
-  }
-}
 
 export const me = () =>
   dispatch =>
