@@ -6,6 +6,7 @@ const serve = require('koa-static');
 const db = require('./db');
 const PORT = process.env.PORT || 8080;
 const app = new Koa();
+const indexRoutes = require('./routes');
 
 module.exports = app;
 
@@ -33,10 +34,25 @@ const createApp = () => {
 
   // static file-serving middleware
   // $ GET /package.json
-  app.use(serve('.'));
+//  app.use(serve('.'));
 
+  // attaches db to ctx obeject
+  app.use(async (ctx, next) => {
+    console.log('hits first use');
+    ctx.db = db;
+    await next(); //you can choose to capture this if you'd like.
+  //  console.log(ctx.db)
+
+  });
+  app.use(indexRoutes.routes());
+  app.use(ctx => {
+    ctx.body = 'Hello Koa';
+  });
   // $ GET static file
   app.use(serve(path.join(__dirname, '..', 'public')));
+
+
+  //app.use(require('./routes'));
 
 };
 
