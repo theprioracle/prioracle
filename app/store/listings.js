@@ -25,7 +25,7 @@ const getListingsAction = (listings) => (
 // TODO: Initial testing for redux, change URL later
 export const fetchListings = function() {
   return function thunk(dispatch) {
-    return axios.get('http://172.16.23.244:8080/api/users')
+    return axios.get('http://172.16.23.244:8080/')
       .then(res => res.data)
       .then(listings => dispatch(getListingsAction(listings)))
       .catch(err => console.log(err));

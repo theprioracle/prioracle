@@ -20,6 +20,13 @@ class ListingForm extends Component {
     };
   }
 
+  // TEMP: For verifying react-redux connect
+  componentDidMount() {
+    console.log("ListingForm: Testing redux store");
+    if (this.props.listings)
+      console.log("LISTINGS:", this.props.listings);
+  }
+
   render() {
     return (
       <ScrollView style={styles.scrollContainer}>
