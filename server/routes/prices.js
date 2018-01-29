@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const router = new Router();
-const { Price } = require('../db/models');
+const { Price, Listing } = require('../db/models');
+//const { Listing } = require('../db/models');
 
 module.exports = router;
 
