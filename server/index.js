@@ -29,30 +29,16 @@ const createApp = () => {
   // body parsing middleware
   app.use(bodyParser());
 
-  // auth and api routes
-  // app.use('/api', require('./api'));
-
-  // static file-serving middleware
-  // $ GET /package.json
-//  app.use(serve('.'));
-
   // attaches db to ctx obeject
   app.use(async (ctx, next) => {
-    console.log('hits first use');
     ctx.db = db;
     await next(); //you can choose to capture this if you'd like.
-  //  console.log(ctx.db)
+  });
 
-  });
   app.use(indexRoutes.routes());
-  app.use(ctx => {
-    ctx.body = 'Hello Koa';
-  });
+
   // $ GET static file
   app.use(serve(path.join(__dirname, '..', 'public')));
-
-
-  //app.use(require('./routes'));
 
 };
 

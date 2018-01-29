@@ -1,5 +1,12 @@
 const Router = require('koa-router');
 const router = new Router();
+const listingRoutes = require('./listings');
+const userRoutes = require('./users');
+const priceRoutes = require('./prices');
+
+router.use(listingRoutes.routes());
+router.use(userRoutes.routes());
+router.use(priceRoutes.routes());
 
 router.get('/', async (ctx) => {
   ctx.body = {
@@ -9,6 +16,8 @@ router.get('/', async (ctx) => {
 })
 
 module.exports = router;
+
+// this will dynamically create routes
 
 // module.exports = async function(ctx, next){
 //   console.log('hits router')
