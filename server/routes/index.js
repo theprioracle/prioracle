@@ -4,9 +4,9 @@ const listingRoutes = require('./listings');
 const userRoutes = require('./users');
 const priceRoutes = require('./prices');
 
-router.use(listingRoutes.routes());
-router.use(userRoutes.routes());
-router.use(priceRoutes.routes());
+router.use('/api/listings', listingRoutes.routes());
+router.use('/api/users',userRoutes.routes());
+router.use('/api/prices', priceRoutes.routes());
 
 router.get('/', async (ctx) => {
   ctx.body = {

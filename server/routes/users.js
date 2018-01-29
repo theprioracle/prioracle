@@ -9,3 +9,11 @@ router.get('/', async (ctx) => {
     include: []
   });
 })
+
+router.get('/:id', async (ctx) => {
+  ctx.body = await User.findOne({
+    where: {
+      id: ctx.params.id
+    }
+  })
+})

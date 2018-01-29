@@ -148,5 +148,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-//export default ListingForm;
 export default connect(mapStateToProps)(ListingForm);
