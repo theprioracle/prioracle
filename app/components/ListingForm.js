@@ -62,7 +62,6 @@ class ListingForm extends Component {
           {/* PRODUCT CONDITION FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Condition</FormLabel>
           <Picker
-            mode={2}
             selectedValue={this.state.selectedCondition}
             onValueChange={(itemValue) => this.setState({selectedCondition: itemValue})}>
             <Picker.Item label="New" value="new" />
