@@ -15,9 +15,15 @@ class ListingForm extends Component {
     super(props);
 
     this.state = {
+      productName: '',
+      productDescription: '',
+      productTags: '',
+      productCategory: '',
       selectedCondition: 'New',
       selectedShipping: 'Buyer'
     };
+
+    this.getSuggestedPrice = this.getSuggestedPrice.bind(this);
   }
 
   // TEMP: For verifying react-redux connect
@@ -25,6 +31,18 @@ class ListingForm extends Component {
     console.log("ListingForm: Testing redux store");
     if (this.props.listings)
       console.log("LISTINGS:", this.props.listings);
+  }
+
+  getSuggestedPrice() {
+    console.log("Before the analysis --");
+    console.log("Name:", this.state.productName);
+    console.log("Description:", this.state.productDescription);
+    console.log("Tags:", this.state.productTags);
+    console.log("Category:", this.state.productCategory);
+    console.log("Condition:", this.state.selectedCondition);
+    console.log("Shipping:", this.state.selectedShipping);
+
+    this.props.navigation.navigate('Analysis');
   }
 
   render() {
@@ -45,26 +63,30 @@ class ListingForm extends Component {
           <FormLabel labelStyle={styles.formLabel}>Product Name</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
-            textAlign={'center'} />
+            textAlign={'center'}
+            onChangeText={text => this.setState({productName: text})} />
 
           {/* PRODUCT DESCRIPTION FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Description</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
             textAlign={'center'}
-            multiline={true} />
+            multiline={true}
+            onChangeText={text => this.setState({productDescription: text})} />
 
           {/* PRODUCT TAGS FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Tags (TEMP: Comma separated?)</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
-            textAlign={'center'} />
+            textAlign={'center'}
+            onChangeText={text => this.setState({productTags: text})} />
           
           {/* PRODUCT CATEGORY FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Category (TEMP: /-separated?)</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
-            textAlign={'center'} />
+            textAlign={'center'}
+            onChangeText={text => this.setState({productCategory: text})} />
 
           {/* PRODUCT CONDITION FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Condition</FormLabel>
@@ -89,7 +111,7 @@ class ListingForm extends Component {
           <Text>{"\n"}</Text>
           <Button
             title='Crunch the numbers!'
-            onPress={() => this.props.navigation.navigate('Analysis')} />
+            onPress={() => this.getSuggestedPrice()} />
           <Text>{"\n"}</Text>
         </KeyboardAvoidingView>
       </ScrollView>
