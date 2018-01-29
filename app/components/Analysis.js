@@ -22,13 +22,14 @@ class Analysis extends Component {
       <KeyboardAvoidingView 
         style={styles.container}
         behavior='padding' >
-        {/* <Header
+        {/* TODO: Replace with sticky header */}
+        <Header
           outerContainerStyles={styles.headerOuterContainer}
           leftComponent={{ icon: 'menu', color: '#fff' }}
           centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
           rightComponent={{ icon: 'home', color: '#fff' }}
           backgroundColor='#d14f4f'
-        /> */}
+        />
         <Text>ANALYSIS STUFF GOES HERE</Text>
       </KeyboardAvoidingView>
     );
