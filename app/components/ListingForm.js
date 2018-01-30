@@ -4,8 +4,8 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView, Picker, ScrollView } from 'react-native';
-import { Button, FormLabel, FormInput, Header } from 'react-native-elements';
 import { StackNavigator, NavigationActions } from 'react-navigation';
+import { Button, FormLabel, FormInput, FormValidationMessage, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import { addListing } from '../store';

@@ -125,7 +125,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   inputText: {
-    color: 'white'
+    color: 'white',
+    padding: 20
   }
 });
 
