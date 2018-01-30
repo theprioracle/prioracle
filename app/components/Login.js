@@ -24,7 +24,6 @@ class Login extends Component {
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
   }
 
-  // TODO: Drop Firebase support
   async login(email, pass) {
     try {
         await firebase.auth()
@@ -39,7 +38,6 @@ class Login extends Component {
     }
   }
 
-  // TODO: Drop Firebase support
   async signup(email, pass) {
     try {
         await firebase.auth()
@@ -90,7 +88,6 @@ class Login extends Component {
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
 
-        {/* TODO: Find better way to space these components out */}
         <Text>{'\n'}</Text>
         <Button
           title='Log In'
@@ -102,7 +99,7 @@ class Login extends Component {
           icon={{ name: 'add' }}
           onPress={() => this.handleSignupButtonPress()} />
         
-        {/* TODO/TEMP: debug button for skipping login (remove later!) */}
+        {/* Debug button for skipping login (remove later!) */}
         <Text>{"\n"}</Text>
         <Button
           title='DEBUG: Skip login'

@@ -14,7 +14,6 @@ class ProductAnalysis extends Component {
   constructor(props) {
     super(props);
 
-    // TODO: Set initial price to whatever was suggested by the combined power of our algorithms 
     this.state = {
       listing: {},
       selectedPrice: 0
@@ -22,20 +21,20 @@ class ProductAnalysis extends Component {
   }
 
   componentDidMount() {
-    // TEMP: Find listing that was just posted by ID
-    // TODO: Search on backend for listing
     const listingId = Number(this.props.navigation.state.params.id);
     const currentListing = this.props.listings.find(listing => listing.id === listingId);
+
+    console.log("CURRENT LISTING:", currentListing);
 
     this.setState({ listing: currentListing });
   }
 
   render() {
-    return this.state.listing && (
+
+    return (
       <KeyboardAvoidingView 
         style={styles.container}
         behavior='padding' >
-        {/* TODO: Replace with sticky header */}
         <Header
           outerContainerStyles={styles.headerOuterContainer}
           leftComponent={{ icon: 'menu', color: '#fff' }}
@@ -43,8 +42,8 @@ class ProductAnalysis extends Component {
           rightComponent={{ icon: 'home', color: '#fff' }}
           backgroundColor='#d14f4f'
         />
-        <Text>{'\n\n'}Information for {`${this.state.listing.name}`}</Text>
-        <Text>{'\n\n'}Description: {`${this.state.listing.description}`}</Text>
+        <Text>{'\n\n'}Information for {`${this.state.listing && this.state.listing.name}`}</Text>
+        <Text>{'\n\n'}Description: {`${this.state.listing && this.state.listing.description}`}</Text>
       </KeyboardAvoidingView>
     );
   }

@@ -44,8 +44,8 @@ export const addListing = function(listing, navigation) {
     return axios.post(dbUrl + '/api/listings', listing)
       .then(res => res.data)
       .then(createdListing => { 
-        newListing = createdListing;
-        dispatch(addListingAction(createdListing));
+        newListing = createdListing[0];
+        dispatch(addListingAction(createdListing[0]));
       })
       .then(() => navigation.navigate('Analysis', { id: newListing.id }))
       .catch(err => console.log(err));

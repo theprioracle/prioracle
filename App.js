@@ -14,7 +14,7 @@ import * as firebase from "firebase";
 import store, { fetchListings } from  './app/store';
 import HeaderOptions from './app/components/HeaderOptions';
 
-// TODO: Don't forget to change this to our deployed DB URL later!
+// Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
 
 export default class App extends Component {
@@ -26,7 +26,7 @@ export default class App extends Component {
     // Fetch all listings in our top-level component
     store.dispatch(fetchListings());
 
-    // TEMP: Testing out Firebase for our backend needs, remove once authentication is working with another method
+    // Testing out Firebase for our backend needs, remove once authentication is working with another method
     var config = {
       apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
       authDomain: "prioracle-ad317.firebaseapp.com",

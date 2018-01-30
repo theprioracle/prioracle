@@ -62,16 +62,9 @@ class ListingForm extends Component {
             textAlign={'center'}
             multiline={true}
             onChangeText={text => this.setState({productDescription: text})} />
-
-          {/* PRODUCT TAGS FIELD */}
-          <FormLabel labelStyle={styles.formLabel}>Product Tags (TEMP: Comma separated?)</FormLabel>
-          <FormInput
-            inputStyle={styles.inputText}
-            textAlign={'center'}
-            onChangeText={text => this.setState({productTags: text})} />
           
           {/* PRODUCT CATEGORY FIELD */}
-          <FormLabel labelStyle={styles.formLabel}>Product Category (TEMP: /-separated?)</FormLabel>
+          <FormLabel labelStyle={styles.formLabel}>Product Category (/-separated)</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
             textAlign={'center'}
@@ -96,7 +89,6 @@ class ListingForm extends Component {
             <Picker.Item label="Seller" value="Seller" />
           </Picker>
 
-          {/* TODO: Find a better way to format newlines */}
           <Text>{"\n"}</Text>
           <Button
             title='Crunch the numbers!'
