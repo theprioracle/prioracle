@@ -15,7 +15,8 @@ const Price = require('./price');
  * instead of: const User = require('../db/models/user')
  */
 
-Listing.belongsToMany(User, {through: 'user_listing'});
+Listing.belongsToMany(User, {through: 'user_listings'});
+User.belongsToMany(Listing, {through: 'user_listings'});
 Listing.hasMany(Price);
 Price.belongsTo(Listing);
 
