@@ -17,8 +17,8 @@ const Price = require('./price');
 
 Listing.belongsToMany(User, {through: 'user_listings'});
 User.belongsToMany(Listing, {through: 'user_listings'});
-Listing.hasMany(Price);
 Price.belongsTo(Listing);
+Listing.hasMany(Price);
 
 module.exports = {
   User,

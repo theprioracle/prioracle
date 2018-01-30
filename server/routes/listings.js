@@ -28,6 +28,35 @@ router.get('/:id', async (ctx) => {
   })
 })
 
+router.put('/:id', async (ctx) => {
+  let listing = await Listing.findOne({
+    where: {
+      id: ctx.params.id
+    },
+    include: [{model: Price}]
+  });
+  listing = await listing.update(
+    ctx.request.body
+  )
+  prices = await listing.getPrices()
+
+  // we can then update our most recent price instance for this listing
+  let price = await prices[prices.length-1].update({
+    // these values are hard-coded now but should come from our algorithm/scraper
+    algoPrice: 10,
+    scraperPrice: 14
+  })
+  ctx.body = listing;
+})
+
 router.post('/', async (ctx) => {
-  ctx.body = await Listing.create(ctx.request.body);
+  let price = await Price.create({
+    algoPrice: 25,
+    scraperPrice: 30
+  });
+  let listing = await Listing.findOrCreate({
+    where: ctx.request.body
+  });
+  await price.setListing(listing[0])
+  ctx.body = listing;
 })
