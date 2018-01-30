@@ -37,8 +37,6 @@ class ListingForm extends Component {
       status: 'inactive'
     };
 
-    console.log("Before post:", listingObj);
-
     // Submit post request with our filled-in form data
     this.props.addListingFromForm(listingObj, this.props.navigation);
   }

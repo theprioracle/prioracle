@@ -14,6 +14,7 @@ import * as firebase from "firebase";
 import store, { fetchListings } from  './app/store';
 import HeaderOptions from './app/components/HeaderOptions';
 
+// TODO: Don't forget to change this to our deployed DB URL later!
 export const dbUrl = 'http://172.16.23.244:8080';
 
 export default class App extends Component {
@@ -22,22 +23,20 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-
-    console.log("DEBUG: App component mounted!");
-
+    // Fetch all listings in our top-level component
     store.dispatch(fetchListings());
 
     // TEMP: Testing out Firebase for our backend needs, remove once authentication is working with another method
-    // var config = {
-    //   apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
-    //   authDomain: "prioracle-ad317.firebaseapp.com",
-    //   databaseURL: "https://prioracle-ad317.firebaseio.com",
-    //   projectId: "prioracle-ad317",
-    //   storageBucket: "prioracle-ad317.appspot.com",
-    //   messagingSenderId: "910431056594"
-    // };
+    var config = {
+      apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
+      authDomain: "prioracle-ad317.firebaseapp.com",
+      databaseURL: "https://prioracle-ad317.firebaseio.com",
+      projectId: "prioracle-ad317",
+      storageBucket: "prioracle-ad317.appspot.com",
+      messagingSenderId: "910431056594"
+    };
 
-    // firebase.initializeApp(config);
+    firebase.initializeApp(config);
   }
 
   render() {
@@ -48,17 +47,6 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    justifyContent: 'space-between',
-    backgroundColor: '#d14f4f'
-  },
-  headerContainer: {
-    backgroundColor: '#d14f4f'
-  }
-});
 
 const RootNavigator = StackNavigator({
   Main: {
@@ -81,5 +69,16 @@ const RootNavigator = StackNavigator({
       title: 'Product Analysis',
       headerRight: <Icon name='menu' />
     }
+  }
+});
+
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: '#d14f4f'
+  },
+  headerContainer: {
+    backgroundColor: '#d14f4f'
   }
 });

@@ -28,7 +28,6 @@ const addListingAction = (listing) => (
 /**
  * THUNK CREATORS
  */
-// TODO: Initial testing for redux, change URL later
 export const fetchListings = function() {
   return function thunk(dispatch) {
     return axios.get(dbUrl + '/api/listings')
@@ -41,14 +40,14 @@ export const fetchListings = function() {
 export const addListing = function(listing, navigation) {
   return function thunk(dispatch) {
     let newListing = null;
-    return axios.post(dbUrl + '/api/listings',listing)
+    
+    return axios.post(dbUrl + '/api/listings', listing)
       .then(res => res.data)
       .then(createdListing => { 
         newListing = createdListing;
-        console.log("YOOO:", createdListing);
         dispatch(addListingAction(createdListing));
       })
-      .then(() => navigation.navigate('Analysis', {id: newListing.id}))
+      .then(() => navigation.navigate('Analysis', { id: newListing.id }))
       .catch(err => console.log(err));
   }
 }
