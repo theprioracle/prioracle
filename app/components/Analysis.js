@@ -13,8 +13,12 @@ class Analysis extends Component {
 
     // TODO: Set price to 
     this.state = {
-      price: 0
+      selectedPrice: 0
     };
+  }
+
+  componentDidMount() {
+    console.log("params name:", this.props.navigation.state.params.name);
   }
 
   render() {
@@ -30,7 +34,7 @@ class Analysis extends Component {
           rightComponent={{ icon: 'home', color: '#fff' }}
           backgroundColor='#d14f4f'
         />
-        <Text>ANALYSIS STUFF GOES HERE</Text>
+        <Text>{'\n\n'}ANALYSIS STUFF GOES HERE</Text>
       </KeyboardAvoidingView>
     );
   }

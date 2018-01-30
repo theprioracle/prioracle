@@ -12,6 +12,7 @@ import { Icon } from 'react-native-elements';
 import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
+import HeaderOptions from './app/components/HeaderOptions';
 
 export default class App extends Component {
   constructor(props) {
@@ -69,11 +70,13 @@ const RootNavigator = StackNavigator({
     screen: ListingForm,
     navigationOptions: {
       title: 'Add a New Listing',
-      headerRight: <Icon name='menu' />,
+      headerRight: <HeaderOptions />,
+      //headerRight: <Icon name='menu' />,
       headerStyle: styles.headerContainer
     }
   },
   Analysis: {
+    path: 'listings/:name',
     screen: Analysis,
     navigationOptions: {
       title: 'Product Analysis'

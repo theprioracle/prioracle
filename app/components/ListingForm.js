@@ -5,10 +5,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView, Picker, ScrollView } from 'react-native';
 import { Button, FormLabel, FormInput, Header } from 'react-native-elements';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
-//import Header from './Header';
+import { addListing } from '../store';
 
 class ListingForm extends Component {
   constructor(props) {
@@ -23,26 +23,24 @@ class ListingForm extends Component {
       selectedShipping: 'Buyer'
     };
 
-    this.getSuggestedPrice = this.getSuggestedPrice.bind(this);
+    this.getProductAnalysis = this.getProductAnalysis.bind(this);
   }
 
-  // TEMP: For verifying react-redux connect
-  componentDidMount() {
-    console.log("ListingForm: Testing redux store");
-    if (this.props.listings)
-      console.log("LISTINGS:", this.props.listings);
-  }
+  getProductAnalysis() {
+    // Create new listing object with our form data
+    const listingObj = {
+      name: this.state.productName,
+      description: this.state.productDescription,
+      category: this.state.productCategory,
+      condition: this.state.selectedCondition,
+      sellerShips: this.selectedShipping === 'Seller' ? true : false
+    };
 
-  getSuggestedPrice() {
-    console.log("Before the analysis --");
-    console.log("Name:", this.state.productName);
-    console.log("Description:", this.state.productDescription);
-    console.log("Tags:", this.state.productTags);
-    console.log("Category:", this.state.productCategory);
-    console.log("Condition:", this.state.selectedCondition);
-    console.log("Shipping:", this.state.selectedShipping);
+    // Submit post request with our filled-in form data
+    this.props.addListingFromForm(listingObj);
 
-    this.props.navigation.navigate('Analysis');
+    // Display product analysis view
+    this.props.navigation.navigate('Analysis', {name: this.state.productName});
   }
 
   render() {
@@ -51,13 +49,6 @@ class ListingForm extends Component {
         <KeyboardAvoidingView 
           style={styles.container}
           behavior='padding' >
-          {/* <Header
-            outerContainerStyles={styles.headerOuterContainer}
-            leftComponent={{ icon: 'menu', color: '#fff' }}
-            centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
-            rightComponent={{ icon: 'home', color: '#fff' }}
-            backgroundColor='#d14f4f'
-          /> */}
 
           {/* PRODUCT NAME FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Name</FormLabel>
@@ -93,9 +84,9 @@ class ListingForm extends Component {
           <Picker
             selectedValue={this.state.selectedCondition}
             onValueChange={(itemValue) => this.setState({selectedCondition: itemValue})}>
-            <Picker.Item label="New" value="new" />
-            <Picker.Item label="Used" value="used" />
-            <Picker.Item label="Like New" value="like-new" />
+            <Picker.Item label="New" value="New" />
+            <Picker.Item label="Used" value="Used" />
+            <Picker.Item label="Like New" value="Like New" />
           </Picker>
 
           {/* USER SHIPPING FIELD */}
@@ -103,15 +94,15 @@ class ListingForm extends Component {
           <Picker
             selectedValue={this.state.selectedShipping}
             onValueChange={(itemValue) => this.setState({selectedShipping: itemValue})}>
-            <Picker.Item label="Buyer" value="buyer" />
-            <Picker.Item label="Seller" value="seller" />
+            <Picker.Item label="Buyer" value="Buyer" />
+            <Picker.Item label="Seller" value="Seller" />
           </Picker>
 
           {/* TODO: Find a better way to format newlines */}
           <Text>{"\n"}</Text>
           <Button
             title='Crunch the numbers!'
-            onPress={() => this.getSuggestedPrice()} />
+            onPress={() => this.getProductAnalysis()} />
           <Text>{"\n"}</Text>
         </KeyboardAvoidingView>
       </ScrollView>
@@ -148,4 +139,13 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(ListingForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addListingFromForm(listing) {
+      console.log('DEBUG: In addListingFromForm');
+      dispatch(addListing(listing));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListingForm);
