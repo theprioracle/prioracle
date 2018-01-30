@@ -2,17 +2,19 @@
 // Entry point for Prioracle!
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { Provider } from 'react-redux'
 import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
-import Analysis from './app/components/Analysis';
+import ProductAnalysis from './app/components/ProductAnalysis';
 import { Icon } from 'react-native-elements';
 import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
 import HeaderOptions from './app/components/HeaderOptions';
+
+export const dbUrl = 'http://172.16.23.244:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ export default class App extends Component {
 
     store.dispatch(fetchListings());
 
-    // TEMP: Testing out Firebase for our backend needs
+    // TEMP: Testing out Firebase for our backend needs, remove once authentication is working with another method
     // var config = {
     //   apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
     //   authDomain: "prioracle-ad317.firebaseapp.com",
@@ -62,24 +64,22 @@ const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
     navigationOptions: {
-      title: 'Login',
-      headerStyle: styles.headerContainer
+      header: null
     }
   },
   ListingForm: {
     screen: ListingForm,
     navigationOptions: {
       title: 'Add a New Listing',
-      headerRight: <HeaderOptions />,
-      //headerRight: <Icon name='menu' />,
-      headerStyle: styles.headerContainer
+      headerRight: <Icon name='menu' />
     }
   },
   Analysis: {
-    path: 'listings/:name',
-    screen: Analysis,
+    path: 'listings/:id',
+    screen: ProductAnalysis,
     navigationOptions: {
-      title: 'Product Analysis'
+      title: 'Product Analysis',
+      headerRight: <Icon name='menu' />
     }
   }
 });

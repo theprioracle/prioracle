@@ -6,23 +6,32 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
 import { Button, FormLabel, FormInput, Header } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
+import { connect } from 'react-redux';
 
-class Analysis extends Component {
+import { fetchListings } from '../store';
+
+class ProductAnalysis extends Component {
   constructor(props) {
     super(props);
 
-    // TODO: Set price to 
+    // TODO: Set initial price to whatever was suggested by the combined power of our algorithms 
     this.state = {
+      listing: {},
       selectedPrice: 0
     };
   }
 
   componentDidMount() {
-    console.log("params name:", this.props.navigation.state.params.name);
+    // TEMP: Find listing that was just posted by ID
+    // TODO: Search on backend for listing
+    const listingId = Number(this.props.navigation.state.params.id);
+    const currentListing = this.props.listings.find(listing => listing.id === listingId);
+
+    this.setState({ listing: currentListing });
   }
 
   render() {
-    return (
+    return this.state.listing && (
       <KeyboardAvoidingView 
         style={styles.container}
         behavior='padding' >
@@ -34,7 +43,8 @@ class Analysis extends Component {
           rightComponent={{ icon: 'home', color: '#fff' }}
           backgroundColor='#d14f4f'
         />
-        <Text>{'\n\n'}ANALYSIS STUFF GOES HERE</Text>
+        <Text>{'\n\n'}Information for {`${this.state.listing.name}`}</Text>
+        <Text>{'\n\n'}Description: {`${this.state.listing.description}`}</Text>
       </KeyboardAvoidingView>
     );
   }
@@ -60,4 +70,10 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Analysis;
+const mapStateToProps = (state) => {
+  return {
+    listings: state.listings.sort((a, b) => b.id - a.id)
+  };
+}
+
+export default connect(mapStateToProps)(ProductAnalysis);

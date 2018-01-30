@@ -1,6 +1,7 @@
 // app/store/listings.js
 
 import axios from 'axios';
+import { dbUrl } from '../../App';
 
 /**
  * ACTION TYPES
@@ -30,18 +31,24 @@ const addListingAction = (listing) => (
 // TODO: Initial testing for redux, change URL later
 export const fetchListings = function() {
   return function thunk(dispatch) {
-    return axios.get('http://172.16.23.244:8080/api/listings')
+    return axios.get(dbUrl + '/api/listings')
       .then(res => res.data)
       .then(listings => dispatch(getListingsAction(listings)))
       .catch(err => console.log(err));
   }
 }
 
-export const addListing = function(listing) {
+export const addListing = function(listing, navigation) {
   return function thunk(dispatch) {
-    return axios.post('http://172.16.23.244:8080/api/listings',listing)
+    let newListing = null;
+    return axios.post(dbUrl + '/api/listings',listing)
       .then(res => res.data)
-      .then(listing => dispatch(addListingAction(listing)))
+      .then(createdListing => { 
+        newListing = createdListing;
+        console.log("YOOO:", createdListing);
+        dispatch(addListingAction(createdListing));
+      })
+      .then(() => navigation.navigate('Analysis', {id: newListing.id}))
       .catch(err => console.log(err));
   }
 }

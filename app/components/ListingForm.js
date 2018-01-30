@@ -33,14 +33,14 @@ class ListingForm extends Component {
       description: this.state.productDescription,
       category: this.state.productCategory,
       condition: this.state.selectedCondition,
-      sellerShips: this.selectedShipping === 'Seller' ? true : false
+      sellerShips: this.state.selectedShipping === 'Seller' ? true : false,
+      status: 'inactive'
     };
 
-    // Submit post request with our filled-in form data
-    this.props.addListingFromForm(listingObj);
+    console.log("Before post:", listingObj);
 
-    // Display product analysis view
-    this.props.navigation.navigate('Analysis', {name: this.state.productName});
+    // Submit post request with our filled-in form data
+    this.props.addListingFromForm(listingObj, this.props.navigation);
   }
 
   render() {
@@ -141,9 +141,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addListingFromForm(listing) {
-      console.log('DEBUG: In addListingFromForm');
-      dispatch(addListing(listing));
+    addListingFromForm(listing, navigation) {
+      dispatch(addListing(listing, navigation));
     }
   }
 }
