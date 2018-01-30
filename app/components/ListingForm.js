@@ -51,13 +51,13 @@ class ListingForm extends Component {
         <KeyboardAvoidingView 
           style={styles.container}
           behavior='padding' >
-          <Header
+          {/* <Header
             outerContainerStyles={styles.headerOuterContainer}
             leftComponent={{ icon: 'menu', color: '#fff' }}
             centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
             rightComponent={{ icon: 'home', color: '#fff' }}
             backgroundColor='#d14f4f'
-          />
+          /> */}
 
           {/* PRODUCT NAME FIELD */}
           <FormLabel labelStyle={styles.formLabel}>Product Name</FormLabel>

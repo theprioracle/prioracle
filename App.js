@@ -8,7 +8,7 @@ import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
 import Analysis from './app/components/Analysis';
-import { Header } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
@@ -46,17 +46,31 @@ export default class App extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: '#d14f4f'
+  },
+  headerContainer: {
+    backgroundColor: '#d14f4f'
+  }
+});
+
 const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
     navigationOptions: {
       title: 'Login',
+      headerStyle: styles.headerContainer
     }
   },
   ListingForm: {
     screen: ListingForm,
     navigationOptions: {
-      title: 'Add a New Listing'
+      title: 'Add a New Listing',
+      headerRight: <Icon name='menu' />,
+      headerStyle: styles.headerContainer
     }
   },
   Analysis: {
@@ -64,16 +78,5 @@ const RootNavigator = StackNavigator({
     navigationOptions: {
       title: 'Product Analysis'
     }
-  }
-});
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    justifyContent: 'space-between',
-    backgroundColor: '#d14f4f'
-  },
-  headerOuterContainer: {
-    height: 50
   }
 });
