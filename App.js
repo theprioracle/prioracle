@@ -14,6 +14,7 @@ import * as firebase from "firebase";
 import store, { fetchListings } from  './app/store';
 import AppHeader from './app/components/AppHeader';
 import UserHome from './app/components/UserHome';
+import UserListings from './app/components/UserListings';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -85,6 +86,14 @@ const RootNavigator = StackNavigator({
   Analysis: {
     path: 'listings/:id',
     screen: ProductAnalysis,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Product Analysis',
+      header: <AppHeader navigation={navigation} />
+    })
+  },
+  UserListings: {
+    path: 'user/:id/listings',
+    screen: UserListings,
     navigationOptions: ({ navigation }) => ({
       title: 'Product Analysis',
       header: <AppHeader navigation={navigation} />
