@@ -57,6 +57,10 @@ router.post('/', async (ctx) => {
   let listing = await Listing.findOrCreate({
     where: ctx.request.body
   });
-  await price.setListing(listing[0])
+  price = await price.setListing(listing[0]);
+  listing = await Listing.findOrCreate({
+    where: ctx.request.body,
+    include: [{model: Price}]
+  });
   ctx.body = listing;
 })

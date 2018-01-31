@@ -24,7 +24,6 @@ class Login extends Component {
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
   }
 
-  // TODO: Drop Firebase support
   async login(email, pass) {
     try {
         await firebase.auth()
@@ -39,7 +38,6 @@ class Login extends Component {
     }
   }
 
-  // TODO: Drop Firebase support
   async signup(email, pass) {
     try {
         await firebase.auth()
@@ -90,22 +88,24 @@ class Login extends Component {
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
 
-        {/* TODO: Find better way to space these components out */}
         <Text>{'\n'}</Text>
         <Button
           title='Log In'
           icon={{ name: 'hot-tub' }}
+          raised={true}
           onPress={() => this.handleLoginButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'
           icon={{ name: 'add' }}
+          raised={true}
           onPress={() => this.handleSignupButtonPress()} />
         
-        {/* TODO/TEMP: debug button for skipping login (remove later!) */}
+        {/* Debug button for skipping login (remove later!) */}
         <Text>{"\n"}</Text>
         <Button
           title='DEBUG: Skip login'
+          raised={true}
           onPress={() => this.props.navigation.navigate('ListingForm')} />
       </KeyboardAvoidingView>
     );
@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   inputText: {
-    color: 'white'
+    color: 'white',
+    padding: 5
   }
 });
 
