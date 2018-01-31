@@ -7,7 +7,9 @@ import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
 import { Button, FormLabel, FormInput, Header } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
+import { dbUrl } from '../../App';
 import { fetchListings } from '../store';
 
 class ProductAnalysis extends Component {
@@ -20,13 +22,16 @@ class ProductAnalysis extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const listingId = Number(this.props.navigation.state.params.id);
-    const currentListing = this.props.listings.find(listing => listing.id === listingId);
 
-    console.log("CURRENT LISTING:", currentListing);
+    // Fetch listing associated with the listing ID param
+    const currentListing = await axios.get(dbUrl + `/api/listings/${listingId}`);
 
-    this.setState({ listing: currentListing });
+    this.setState({ 
+      listing: currentListing.data,
+      selectedPrice: currentListing.data.prices[currentListing.data.prices.length - 1].metaPrice
+    });
   }
 
   render() {
@@ -36,18 +41,10 @@ class ProductAnalysis extends Component {
       <KeyboardAvoidingView 
         style={styles.container}
         behavior='padding' >
-        <Header
-          outerContainerStyles={styles.headerOuterContainer}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-          backgroundColor='#d14f4f'
-        />
-        <Text>{'\n\n'}Information for {`${this.state.listing && this.state.listing.name}`}</Text>
-        <Text>{'\n\n'}Description: {`${this.state.listing && this.state.listing.description}`}</Text>
-        <Text>{'\n\n'}Algorithm Price: {`${prices && prices[prices.len - 1].algoPrice}`}</Text>
-        <Text>{'\n\n'}Scraper Price: {`${prices && prices[prices.len - 1].scraperPrice}`}</Text>
-        <Text>{'\n\n'}Meta Price: {`${prices && prices[prices.len - 1].metaPrice}`}</Text>
+        <Text>{'\n\n'}Pricing Analysis for {`${this.state.listing && this.state.listing.name}`}</Text>
+        <Text>{'\n\n'}Algorithm Price: {`${prices && prices[prices.length - 1].algoPrice}`}</Text>
+        <Text>{'\n\n'}Scraper Price: {`${prices && prices[prices.length - 1].scraperPrice}`}</Text>
+        <Text>{'\n\n'}Meta Price: {`${prices && prices[prices.length - 1].metaPrice}`}</Text>
       </KeyboardAvoidingView>
     );
   }
@@ -57,19 +54,19 @@ const styles = StyleSheet.create({
     container: { 
         flex: 1,
         justifyContent: 'flex-start',
-        backgroundColor: '#b7513c'
+        backgroundColor: '#e1e8e6'
     },
     headerOuterContainer: {
       height: 50
     },
     formLabel: {
-      color: 'white'
+      color: 'red'
     },
     inputContainer: {
       justifyContent: 'center'
     },
     inputText: {
-      color: 'white'
+      color: 'black'
     }
 });
 
