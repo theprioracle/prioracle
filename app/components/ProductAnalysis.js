@@ -41,15 +41,7 @@ class ProductAnalysis extends Component {
       <KeyboardAvoidingView 
         style={styles.container}
         behavior='padding' >
-        <Header
-          outerContainerStyles={styles.headerOuterContainer}
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'Prioracle', style: { color: '#fff', fontSize: 20 } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-          backgroundColor='#d14f4f'
-        />
-        <Text>{'\n\n'}Information for {`${this.state.listing && this.state.listing.name}`}</Text>
-        <Text>{'\n\n'}Description: {`${this.state.listing && this.state.listing.description}`}</Text>
+        <Text>{'\n\n'}Pricing Analysis for {`${this.state.listing && this.state.listing.name}`}</Text>
         <Text>{'\n\n'}Algorithm Price: {`${prices && prices[prices.length - 1].algoPrice}`}</Text>
         <Text>{'\n\n'}Scraper Price: {`${prices && prices[prices.length - 1].scraperPrice}`}</Text>
         <Text>{'\n\n'}Meta Price: {`${prices && prices[prices.length - 1].metaPrice}`}</Text>
