@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
@@ -14,7 +15,9 @@ class UserHome extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text>This is my home!</Text>
+        <Card title='Information for PLACEHOLDER USER'>
+          <Text>This is my information! And listings. And some other stuff.</Text>
+        </Card>
       </ScrollView>
     );
   }

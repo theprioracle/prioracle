@@ -6,15 +6,38 @@ import {Modal, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
 import { Icon } from 'react-native-elements';
 import ModalDropdown from 'react-native-modal-dropdown';
 
-const menuOptions = ['Add New Listing', 'View Your Listings', 'Logout']
+const menuOptions = [
+  'Add New Listing',      // ListingForm
+  'View Your Listings', 
+  'Logout'
+];
 
-export default HeaderMenu = () => (
-  <ModalDropdown 
-    options={menuOptions}
-    dropdownTextStyle={styles.dropdownContainer} >
-    <Icon name='menu' />
-  </ModalDropdown>
-);
+export default class HeaderMenu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleMenuSelection = this.handleMenuSelection.bind(this);
+  }
+
+  handleMenuSelection(index, value) {
+    // Navigate to view associated with each option
+    if (value === 'Add New Listing')
+      this.props.navigation.navigate('ListingForm');
+    else (value === 'View Your Listings')
+      this.props.navigation.navigate('UserHome');
+  }
+
+  render() {
+    return (
+      <ModalDropdown 
+        options={menuOptions}
+        dropdownTextStyle={styles.dropdownContainer}
+        onSelect={this.handleMenuSelection} >
+        <Icon name='menu' />
+      </ModalDropdown>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: { 
@@ -27,6 +50,6 @@ const styles = StyleSheet.create({
     padding: 20
   },
   dropdownContainer: {
-    size: 24
+    fontSize: 16
   }
 });

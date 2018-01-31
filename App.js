@@ -70,24 +70,24 @@ const RootNavigator = StackNavigator({
   },
   UserHome: {
     screen: UserHome,
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
       title: 'Home',
-      header: <AppHeader />
-    }
+      header: <AppHeader navigation={navigation} />
+    })
   },
   ListingForm: {
     screen: ListingForm,
-    navigationOptions: {
+    navigationOptions: ({navigation}) => ({
       title: 'Add a New Listing',
-      header: <AppHeader />
-    }
+      header: <AppHeader navigation={navigation} />
+    })
   },
   Analysis: {
     path: 'listings/:id',
     screen: ProductAnalysis,
-    navigationOptions: {
+    navigationOptions: ({ navigation }) => ({
       title: 'Product Analysis',
-      header: <AppHeader />
-    }
+      header: <AppHeader navigation={navigation} />
+    })
   }
 });

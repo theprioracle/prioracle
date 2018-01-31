@@ -14,9 +14,9 @@ const AppHeader = ({ navigation }) => (
     <StatusBar barStyle="light-content" />
     <Header
       outerContainerStyles={styles.headerContainer}
-      leftComponent={<HeaderMenu />}
+      leftComponent={<HeaderMenu navigation={navigation} />}
       centerComponent={{ text: 'P r i o r a c l e', style: { color: '#fff' } }}
-      rightComponent={<HeaderHome />}
+      rightComponent={<HeaderHome navigation={navigation} />}
     />
   </View>
 );
