@@ -92,17 +92,20 @@ class Login extends Component {
         <Button
           title='Log In'
           icon={{ name: 'hot-tub' }}
+          raised={true}
           onPress={() => this.handleLoginButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'
           icon={{ name: 'add' }}
+          raised={true}
           onPress={() => this.handleSignupButtonPress()} />
         
         {/* Debug button for skipping login (remove later!) */}
         <Text>{"\n"}</Text>
         <Button
           title='DEBUG: Skip login'
+          raised={true}
           onPress={() => this.props.navigation.navigate('ListingForm')} />
       </KeyboardAvoidingView>
     );
@@ -126,7 +129,7 @@ const styles = StyleSheet.create({
   },
   inputText: {
     color: 'white',
-    padding: 20
+    padding: 5
   }
 });
 

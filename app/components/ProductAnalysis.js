@@ -30,6 +30,7 @@ class ProductAnalysis extends Component {
   }
 
   render() {
+    const prices = this.state.listing.prices;
 
     return (
       <KeyboardAvoidingView 
@@ -44,6 +45,9 @@ class ProductAnalysis extends Component {
         />
         <Text>{'\n\n'}Information for {`${this.state.listing && this.state.listing.name}`}</Text>
         <Text>{'\n\n'}Description: {`${this.state.listing && this.state.listing.description}`}</Text>
+        <Text>{'\n\n'}Algorithm Price: {`${prices && prices[prices.len - 1].algoPrice}`}</Text>
+        <Text>{'\n\n'}Scraper Price: {`${prices && prices[prices.len - 1].scraperPrice}`}</Text>
+        <Text>{'\n\n'}Meta Price: {`${prices && prices[prices.len - 1].metaPrice}`}</Text>
       </KeyboardAvoidingView>
     );
   }

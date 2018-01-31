@@ -102,9 +102,12 @@ class ListingForm extends Component {
 
 const styles = StyleSheet.create({
     container: { 
-        flex: 1,
-        justifyContent: 'flex-start',
-        backgroundColor: '#b7513c'
+      flex: 1,
+      justifyContent: 'flex-start',
+      backgroundColor: '#d14f4f'
+    },
+    scrollContainer: {
+      backgroundColor: '#d14f4f'
     },
     headerOuterContainer: {
       height: 50
