@@ -1,5 +1,5 @@
-// app.components/UserHome.js
-// This view displays a user's home page after they have logged in.
+// app.components/UserListings.js
+// This view displays a user's listings.
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
@@ -7,16 +7,22 @@ import { Card } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
-class UserHome extends Component {
+class UserListing extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
+    return this.props.listings && (
       <ScrollView style={styles.container}>
-        <Card title='Information for PLACEHOLDER USER'>
-          <Text>This is my information! And listings. And some other stuff.</Text>
+        <Card title='Listings for PLACEHOLDER USER'>
+          {
+            this.props.listings.map(listing => (
+              <Text key={listing.id}>
+                {listing.name}{'\n'}
+              </Text>
+            ))
+          }
         </Card>
       </ScrollView>
     );
@@ -37,4 +43,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(UserHome);
+export default connect(mapStateToProps)(UserListing);

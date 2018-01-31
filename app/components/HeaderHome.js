@@ -5,8 +5,8 @@ import React, { Component } from 'react';
 import { Text, TouchableHighlight, View, StyleSheet } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 
-export default HeaderHome = ({navigation}) => (
-  <Icon name='home' onPress={() => console.log("Detected press on home button!")} />
+export default HeaderHome = ({ navigation }) => (
+  <Icon name='home' onPress={() => navigation.navigate('UserHome')} />
 );
 
 const styles = StyleSheet.create({
