@@ -54,19 +54,19 @@ const styles = StyleSheet.create({
     container: { 
         flex: 1,
         justifyContent: 'flex-start',
-        backgroundColor: '#b7513c'
+        backgroundColor: '#e1e8e6'
     },
     headerOuterContainer: {
       height: 50
     },
     formLabel: {
-      color: 'white'
+      color: 'red'
     },
     inputContainer: {
       justifyContent: 'center'
     },
     inputText: {
-      color: 'white'
+      color: 'black'
     }
 });
 

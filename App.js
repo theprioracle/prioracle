@@ -8,11 +8,11 @@ import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
 import ProductAnalysis from './app/components/ProductAnalysis';
-import { Icon } from 'react-native-elements';
+import { Icon, Header } from 'react-native-elements';
 import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
-import HeaderOptions from './app/components/HeaderOptions';
+import AppHeader from './app/components/AppHeader';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -48,6 +48,18 @@ export default class App extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: { 
+    flex: 1,
+    justifyContent: 'space-between',
+    backgroundColor: '#d14f4f'
+  },
+  headerContainer: {
+    backgroundColor: '#d14f4f',
+    padding: 20
+  }
+});
+
 const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
@@ -59,7 +71,7 @@ const RootNavigator = StackNavigator({
     screen: ListingForm,
     navigationOptions: {
       title: 'Add a New Listing',
-      headerRight: <Icon name='menu' />
+      header: <AppHeader />
     }
   },
   Analysis: {
@@ -67,18 +79,7 @@ const RootNavigator = StackNavigator({
     screen: ProductAnalysis,
     navigationOptions: {
       title: 'Product Analysis',
-      headerRight: <Icon name='menu' />
+      header: <AppHeader />
     }
-  }
-});
-
-const styles = StyleSheet.create({
-  container: { 
-    flex: 1,
-    justifyContent: 'space-between',
-    backgroundColor: '#d14f4f'
-  },
-  headerContainer: {
-    backgroundColor: '#d14f4f'
   }
 });

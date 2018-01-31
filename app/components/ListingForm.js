@@ -91,6 +91,7 @@ class ListingForm extends Component {
 
           <Text>{"\n"}</Text>
           <Button
+            buttonStyle={styles.submitButton}
             title='Crunch the numbers!'
             onPress={() => this.getProductAnalysis()} />
           <Text>{"\n"}</Text>
@@ -104,25 +105,25 @@ const styles = StyleSheet.create({
     container: { 
       flex: 1,
       justifyContent: 'flex-start',
-      backgroundColor: '#d14f4f'
+      backgroundColor: '#e1e8e6'
     },
     scrollContainer: {
-      backgroundColor: '#d14f4f'
+      backgroundColor: '#e1e8e6'
     },
     headerOuterContainer: {
       height: 50
     },
     formLabel: {
-      color: 'white'
+      color: 'red'
     },
     inputContainer: {
       justifyContent: 'center'
     },
     inputText: {
-      color: 'white'
+      color: 'black'
     },
-    contentContainer: {
-      paddingVertical: 20
+    submitButton: {
+      backgroundColor: '#d14f4f'
     }
 });
 
