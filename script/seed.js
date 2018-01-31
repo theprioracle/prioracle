@@ -10,7 +10,7 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db');
-const { User, Listing, Price } = require('../server/db/models');
+const { User, Listing, Valuation } = require('../server/db/models');
 
 async function seed () {
   await db.sync({force:true});
@@ -39,15 +39,15 @@ async function seed () {
 
 
   const prices = await Promise.all([
-    Price.create({
+    Valuation.create({
       soldPrice: 52
     })
     .then(price => price.setListing(1)),
-    Price.create({
+    Valuation.create({
       soldPrice: 14
     })
     .then(price => price.setListing(2)),
-    Price.create({
+    Valuation.create({
       soldPrice: 31
     })
     .then(price => price.setListing(3))

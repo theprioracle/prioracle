@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Price = db.define('price', {
+const Valuation = db.define('valuation', {
   algoPrice: {
     type: Sequelize.INTEGER,
   },
@@ -16,11 +16,7 @@ const Price = db.define('price', {
     get() {
       return (this.getDataValue('scraperPrice') + this.getDataValue('algoPrice')) / 2;
     }
-  },
-  date: {
-    type: Sequelize.DATE,
-    defaultValue: Date.now()
   }
 });
 
-module.exports = Price;
+module.exports = Valuation;
