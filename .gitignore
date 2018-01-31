@@ -1,4 +1,4 @@
-.ipynb_checkpoints/
+.*
 LICENSE
 README.md
 train.tsv.7z
