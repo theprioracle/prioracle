@@ -44,7 +44,7 @@ X = [', '.join( last_listing.values() )]
 X_vect = vectorizer.transform(X)
 
 ## Predict listing's price and express it in cents
-algo_price = np.round( model.predict(X_vect)[0] )
+algo_price = np.round( np.expm1(model.predict(X_vect)[0]) )
 algo_price_in_cents = int(algo_price * 100)
 
 ## Insert predicted price into valuations table
