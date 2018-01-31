@@ -34,9 +34,6 @@ export const me = () =>
 
 export const auth = (email, password, method, navigation) =>
    dispatch => {
-    console.log('hits auth dispatch, email is', email)
-    console.log('in store navigation is: ', navigation)
-    console.log('dburl', dbUrl + `/auth/${method}`)
      axios.post('http://172.16.21.76:8080/auth/login', { email, password })
       .then(res => {
         console.log('response from post is ', res.data)
