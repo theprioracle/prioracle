@@ -1,12 +1,12 @@
 // app/components/HeaderHome.js
 // Button for navigating back to home from header
 
-import React, {Component} from 'react';
-import {Modal, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
-import { Icon } from 'react-native-elements';
+import React, { Component } from 'react';
+import { Text, TouchableHighlight, View, StyleSheet } from 'react-native';
+import { Icon, Button } from 'react-native-elements';
 
 export default HeaderHome = ({navigation}) => (
-  <Icon name='home' onPress={console.log("Detected press on home button!")} />
+  <Icon name='home' onPress={() => console.log("Detected press on home button!")} />
 );
 
 const styles = StyleSheet.create({

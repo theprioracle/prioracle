@@ -9,7 +9,9 @@ import ModalDropdown from 'react-native-modal-dropdown';
 const menuOptions = ['Add New Listing', 'View Your Listings', 'Logout']
 
 export default HeaderMenu = () => (
-  <ModalDropdown options={menuOptions} >
+  <ModalDropdown 
+    options={menuOptions}
+    dropdownTextStyle={styles.dropdownContainer} >
     <Icon name='menu' />
   </ModalDropdown>
 );
@@ -23,5 +25,8 @@ const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#d14f4f',
     padding: 20
+  },
+  dropdownContainer: {
+    size: 24
   }
 });

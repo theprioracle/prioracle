@@ -1,4 +1,4 @@
-// app.components/Home.js
+// app.components/Login.js
 // Landing view for our app!
 // NOTE: Home view is currently just a login screen, could add in 
 // additional views for introducing what our app does.

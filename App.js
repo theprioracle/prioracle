@@ -13,6 +13,7 @@ import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
 import AppHeader from './app/components/AppHeader';
+import UserHome from './app/components/UserHome';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -65,6 +66,13 @@ const RootNavigator = StackNavigator({
     screen: Login,
     navigationOptions: {
       header: null
+    }
+  },
+  UserHome: {
+    screen: UserHome,
+    navigationOptions: {
+      title: 'Home',
+      header: <AppHeader />
     }
   },
   ListingForm: {
