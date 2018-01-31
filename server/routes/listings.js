@@ -13,7 +13,7 @@ router.get('/', async (ctx) => {
   if (ctx.query.status) whereQ.id = ctx.query.id;
   ctx.body = await Listing.findAll({
     where:  whereQ,
-    include: [{ model: Price, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
+    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
     attributes: attributes
   });
 })
@@ -23,7 +23,7 @@ router.get('/:id', async (ctx) => {
     where: {
       id: ctx.params.id
     },
-    include: [{ model: Price, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
+    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
     attributes: attributes
   })
 })
@@ -33,12 +33,12 @@ router.put('/:id', async (ctx) => {
     where: {
       id: ctx.params.id
     },
-    include: [{model: Price}]
+    include: [{model: Valuation}]
   });
   listing = await listing.update(
     ctx.request.body
   )
-  prices = await listing.getPrices()
+  prices = await listing.getValuations()
 
   // we can then update our most recent price instance for this listing
   let price = await prices[prices.length-1].update({
@@ -50,7 +50,7 @@ router.put('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-  let price = await Price.create({
+  let price = await Valuation.create({
     algoPrice: 25,
     scraperPrice: 30
   });
@@ -60,7 +60,7 @@ router.post('/', async (ctx) => {
   price = await price.setListing(listing[0]);
   listing = await Listing.findOrCreate({
     where: ctx.request.body,
-    include: [{model: Price}]
+    include: [{model: Valuation}]
   });
   ctx.body = listing;
 })
