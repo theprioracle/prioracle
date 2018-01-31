@@ -8,11 +8,12 @@ import { StackNavigator } from 'react-navigation';
 import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
 import ProductAnalysis from './app/components/ProductAnalysis';
-import { Icon } from 'react-native-elements';
+import { Icon, Header } from 'react-native-elements';
 import * as firebase from "firebase";
 
 import store, { fetchListings } from  './app/store';
-import HeaderOptions from './app/components/HeaderOptions';
+import AppHeader from './app/components/AppHeader';
+import UserHome from './app/components/UserHome';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -48,30 +49,6 @@ export default class App extends Component {
   }
 }
 
-const RootNavigator = StackNavigator({
-  Main: {
-    screen: Login,
-    navigationOptions: {
-      header: null
-    }
-  },
-  ListingForm: {
-    screen: ListingForm,
-    navigationOptions: {
-      title: 'Add a New Listing',
-      headerRight: <Icon name='menu' />
-    }
-  },
-  Analysis: {
-    path: 'listings/:id',
-    screen: ProductAnalysis,
-    navigationOptions: {
-      title: 'Product Analysis',
-      headerRight: <Icon name='menu' />
-    }
-  }
-});
-
 const styles = StyleSheet.create({
   container: { 
     flex: 1,
@@ -79,6 +56,38 @@ const styles = StyleSheet.create({
     backgroundColor: '#d14f4f'
   },
   headerContainer: {
-    backgroundColor: '#d14f4f'
+    backgroundColor: '#d14f4f',
+    padding: 20
+  }
+});
+
+const RootNavigator = StackNavigator({
+  Main: {
+    screen: Login,
+    navigationOptions: {
+      header: null
+    }
+  },
+  UserHome: {
+    screen: UserHome,
+    navigationOptions: {
+      title: 'Home',
+      header: <AppHeader />
+    }
+  },
+  ListingForm: {
+    screen: ListingForm,
+    navigationOptions: {
+      title: 'Add a New Listing',
+      header: <AppHeader />
+    }
+  },
+  Analysis: {
+    path: 'listings/:id',
+    screen: ProductAnalysis,
+    navigationOptions: {
+      title: 'Product Analysis',
+      header: <AppHeader />
+    }
   }
 });
