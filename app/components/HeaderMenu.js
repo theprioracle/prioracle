@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
     padding: 20
   },
   dropdownContainer: {
-    size: 24
+    fontSize: 24
   }
 });

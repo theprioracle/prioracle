@@ -3,6 +3,7 @@ const router = new Router();
 const {User} = require('../../db/models')
 
 router.post('/login', async (ctx) => {
+  console.log('hits auth/login endpoint')
   // Look for user by email address
   let user = await User.findOne({
       where: {
@@ -20,8 +21,10 @@ router.post('/login', async (ctx) => {
     ctx.body = 'Invalid password';
   }
   // Otherwise, log the user in
-  else await ctx.login(user);
-  ctx.body = 'Succesful Login'
+  else {
+    await ctx.login(user);
+    ctx.body = 'Succesful Login'
+  }
 })
 
 router.post('/logout', (ctx) => {
