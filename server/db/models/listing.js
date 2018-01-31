@@ -4,6 +4,7 @@ const db = require('../db');
 const Listing = db.define('listing', {
   name: {
     type: Sequelize.STRING,
+    allowNull: false
   },
   description: {
     type: Sequelize.TEXT,
@@ -15,11 +16,10 @@ const Listing = db.define('listing', {
     type: Sequelize.STRING,
   },
   status: {
-    type: Sequelize.ENUM('active', 'inactive')
+    type: Sequelize.STRING
   },
-  listedAt: {
-    type: Sequelize.DATE,
-    defaultValue: Date.now()
+  brand: {
+    type: Sequelize.STRING
   },
   sellerShips: {
     type: Sequelize.BOOLEAN
