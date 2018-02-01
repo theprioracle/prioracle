@@ -38,21 +38,11 @@ class ListingForm extends Component {
   }
 
   getProductAnalysis() {
-    // Validate that user has filled out the text input fields
+    // Validate that user has filled out the product name field
     if (this.state.productName === '') {
       this.showErrorAlert('product-name-blank'); return;
-    } else if (this.state.productDescription === '') {
-      this.showErrorAlert('product-desc-blank'); return;
-    } else if (this.state.productCategory === '') {
-      this.showErrorAlert('product-category-blank', this.state.productCategory); return;
     }
-
-    // Validate that product category corresponds to the One/Two/Three format
-    const categoryCount = this.state.productCategory.split('/').length;
-    if (categoryCount != 3) {
-      this.showErrorAlert('product-category-mismatch', categoryCount); return;
-    }
-
+    
     // Create new listing object with our form data
     const listingObj = {
       name: this.state.productName,
