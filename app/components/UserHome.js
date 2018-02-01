@@ -14,7 +14,7 @@ class UserHome extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Card title='Information for PLACEHOLDER USER'>
           <Text>This is my information! And listings. And some other stuff.</Text>
         </Card>
