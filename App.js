@@ -18,7 +18,7 @@ import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
 
 // Use this link to access our backend!
-export const dbUrl = 'http://172.16.23.244:8080';
+export const dbUrl = 'http://localhost:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -29,17 +29,17 @@ export default class App extends Component {
     // Fetch all listings in our top-level component
     store.dispatch(fetchListings());
 
-    // Testing out Firebase for our backend needs, remove once authentication is working with another method
-    var config = {
-      apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
-      authDomain: "prioracle-ad317.firebaseapp.com",
-      databaseURL: "https://prioracle-ad317.firebaseio.com",
-      projectId: "prioracle-ad317",
-      storageBucket: "prioracle-ad317.appspot.com",
-      messagingSenderId: "910431056594"
-    };
+    // // Testing out Firebase for our backend needs, remove once authentication is working with another method
+    // var config = {
+    //   apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
+    //   authDomain: "prioracle-ad317.firebaseapp.com",
+    //   databaseURL: "https://prioracle-ad317.firebaseio.com",
+    //   projectId: "prioracle-ad317",
+    //   storageBucket: "prioracle-ad317.appspot.com",
+    //   messagingSenderId: "910431056594"
+    // };
 
-    firebase.initializeApp(config);
+    // firebase.initializeApp(config);
   }
 
   render() {

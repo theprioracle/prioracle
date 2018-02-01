@@ -6,8 +6,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
 import { Button, FormLabel, FormInput } from 'react-native-elements';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, NavigationActions } from 'react-navigation';
+
 import * as firebase from "firebase";
+import {auth} from '../store';
+import { connect } from 'react-redux';
+
 
 class Login extends Component {
   constructor(props) {
@@ -24,19 +28,19 @@ class Login extends Component {
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
   }
 
-  async login(email, pass) {
-    try {
-        await firebase.auth()
-            .signInWithEmailAndPassword(email, pass);
+  // async login(email, pass) {
+  //   try {
+  //       await firebase.auth()
+  //           .signInWithEmailAndPassword(email, pass);
 
-        console.log(email, 'is now logging in...');
+  //       console.log(email, 'is now logging in...');
 
-        this.props.navigation.navigate('ListingForm');
+  //       this.props.navigation.navigate('ListingForm');
 
-    } catch (error) {
-        console.log(error.toString())
-    }
-  }
+  //   } catch (error) {
+  //       console.log(error.toString())
+  //   }
+  // }
 
   async signup(email, pass) {
     try {
@@ -63,7 +67,8 @@ class Login extends Component {
   }
 
   handleLoginButtonPress() {
-    this.login(this.state.username, this.state.password);
+    console.log('in login', this.props.navigation)
+    this.props.login(this.state.username, this.state.password, 'login', this.props.navigation);
   }
 
   handleSignupButtonPress() {
@@ -133,4 +138,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login (email, password, method, navigation) {
+      console.log('hits login dispatch', email, password, method)
+      dispatch(auth(email, password, method, navigation))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
