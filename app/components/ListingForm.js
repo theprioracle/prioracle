@@ -59,7 +59,7 @@ class ListingForm extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.scrollContainer}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <KeyboardAvoidingView 
           style={styles.container}
           behavior='padding' >
