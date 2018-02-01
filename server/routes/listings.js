@@ -4,7 +4,7 @@ const { Listing, Valuation, User } = require('../db/models');
 
 module.exports = router;
 
-let attributes = ['id', 'name', 'description', 'category', 'condition', 'status', 'sellerShips'];
+let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
 router.get('/', async (ctx) => {
   let whereQ = {};
@@ -13,7 +13,7 @@ router.get('/', async (ctx) => {
   if (ctx.query.status) whereQ.id = ctx.query.id;
   ctx.body = await Listing.findAll({
     where:  whereQ,
-    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
+    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'createdAt']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
     attributes: attributes
   });
 })
@@ -23,7 +23,7 @@ router.get('/:id', async (ctx) => {
     where: {
       id: ctx.params.id
     },
-    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'date']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
+    include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'createdAt']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
     attributes: attributes
   })
 })
