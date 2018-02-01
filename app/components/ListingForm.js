@@ -75,6 +75,7 @@ class ListingForm extends Component {
             {/* PRODUCT DESCRIPTION FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Description</FormLabel>
             <FormInput
+              containerStyle={styles.inputContainer}
               inputStyle={styles.inputText}
               textAlign={'center'}
               multiline={true}
@@ -134,9 +135,11 @@ const styles = StyleSheet.create({
       color: 'red'
     },
     inputContainer: {
+      flex: 1,
       justifyContent: 'center'
     },
     inputText: {
+      flex: 1,
       color: 'black'
     },
     submitButton: {
