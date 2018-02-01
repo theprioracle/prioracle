@@ -144,12 +144,6 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = (state) => {
-  return {
-    listings: state.listings
-  };
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     addListingFromForm(listing, navigation) {
@@ -158,4 +152,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListingForm);
+export default connect(null, mapDispatchToProps)(ListingForm);

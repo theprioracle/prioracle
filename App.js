@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   }
 });
 
-const RootNavigator = StackNavigator({
+export const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
     navigationOptions: {
@@ -85,8 +85,8 @@ const RootNavigator = StackNavigator({
     })
   },
   Analysis: {
-    path: 'listings/:id',
     screen: ProductAnalysis,
+    path: 'listings/:id',
     navigationOptions: ({ navigation }) => ({
       title: 'Product Analysis',
       header: <AppHeader navigation={navigation} />

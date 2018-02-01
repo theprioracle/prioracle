@@ -10,11 +10,17 @@
     "url": "http://www.github.com/arnoldsalas/prioracle"
   },
   "devDependencies": {
-    "react-native-scripts": "1.10.0",
+    "babel-jest": "^22.1.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^22.1.4",
     "jest-expo": "25.0.0",
-    "react-test-renderer": "16.2.0",
     "koa-body-parser": "^1.1.2",
-    "koa-morgan": "^1.0.1"
+    "koa-morgan": "^1.0.1",
+    "react-dom": "^16.2.0",
+    "react-native-scripts": "1.10.0",
+    "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.5.1"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
