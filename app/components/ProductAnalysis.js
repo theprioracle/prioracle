@@ -43,13 +43,13 @@ class ProductAnalysis extends Component {
         style={styles.container}
         behavior='padding' >
         <Card title={`Pricing analysis for ${this.state.listing && this.state.listing.name}`} >
-          <Text>{'\n'}Prioracle has made a decision - a fair price for your product is ${`${valuations && valuations[valuations.length - 1].metaPrice}`}.{'\n'}</Text>
+          <Text>{'\n'}Prioracle has made a decision - a fair price for your product to sell at is ${`${valuations && valuations[valuations.length - 1].metaPrice}`}. You may modify the price below if you wish.{'\n'}</Text>
           <FormLabel labelStyle={styles.formLabel}>Suggested Price</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
             textAlign={'center'}
             editable={true}
-            value={this.state.selectedPrice}
+            value={this.state.selectedPrice.toString()}
             onChangeText={text => this.setState({selectedPrice: Number(text)})} />
         </Card>
       </KeyboardAvoidingView>
