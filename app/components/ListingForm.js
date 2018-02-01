@@ -3,7 +3,7 @@
 // a suggested price.
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, KeyboardAvoidingView, Picker, ScrollView } from 'react-native';
+import { Alert, StyleSheet, Text, KeyboardAvoidingView, Picker, ScrollView } from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
 import { Card, Button, FormLabel, FormInput, FormValidationMessage, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -17,16 +17,42 @@ class ListingForm extends Component {
     this.state = {
       productName: '',
       productDescription: '',
-      productTags: '',
       productCategory: '',
       selectedCondition: 'New',
       selectedShipping: 'Buyer'
     };
 
+    this.showErrorAlert = this.showErrorAlert.bind(this);
     this.getProductAnalysis = this.getProductAnalysis.bind(this);
   }
 
+  showErrorAlert(inputField, userInput) {
+    if (inputField === 'product-name-blank')
+      Alert.alert('Product name cannot be empty!');
+    else if (inputField === 'product-desc-blank')
+      Alert.alert('Product description cannot be blank!');
+    else if (inputField === 'product-category-blank')
+      Alert.alert('Product category cannot be blank!');
+    else if (inputField === 'product-category-mismatch')
+      Alert.alert('Product category must match the following format:\n\nCategoryOne/CategoryTwo/CategoryThree\n' + userInput);
+  }
+
   getProductAnalysis() {
+    // Validate that user has filled out the text input fields
+    if (this.state.productName === '') {
+      this.showErrorAlert('product-name-blank'); return;
+    } else if (this.state.productDescription === '') {
+      this.showErrorAlert('product-desc-blank'); return;
+    } else if (this.state.productCategory === '') {
+      this.showErrorAlert('product-category-blank', this.state.productCategory); return;
+    }
+
+    // Validate that product category corresponds to the One/Two/Three format
+    const categoryCount = this.state.productCategory.split('/').length;
+    if (categoryCount != 3) {
+      this.showErrorAlert('product-category-mismatch', categoryCount); return;
+    }
+
     // Create new listing object with our form data
     const listingObj = {
       name: this.state.productName,
