@@ -39,7 +39,7 @@ export const auth = (email, password, method, navigation) =>
         console.log('response from post is ', res.data)
         dispatch(getUser(res.data))
       })
-      .then(() => navigation.navigate('ListingForm'))
+      .then(() => navigation.navigate('UserHome'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
   }
