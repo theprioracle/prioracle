@@ -50,9 +50,7 @@ router.put('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-  console.log("id:", ctx.request.body.userId);
   let user = await User.findById(Number(ctx.request.body.userId));
-  console.log("found user:", user);
   let userListings = null;
   let updatedListings = [];
 
