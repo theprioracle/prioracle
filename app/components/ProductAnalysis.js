@@ -30,7 +30,7 @@ class ProductAnalysis extends Component {
       .then(res => res.data)
       .then(listing => this.setState({
         listing,
-        selectedPrice: listing.valuations[listing.valuations.length - 1].metaPrice
+        selectedPrice: 0.01 * listing.valuations[listing.valuations.length - 1].metaPrice
       }))
       .catch(error => console.log('Error:', error));
   }
