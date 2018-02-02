@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
@@ -16,7 +16,10 @@ class UserHome extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card title='Information for PLACEHOLDER USER'>
-          <Text>This is my information! And listings. And some other stuff.</Text>
+          <Text>This is my information! And listings. And some other stuff.{'\n\n'}</Text>
+          <Text>What would you like to do?{'\n'}</Text>
+          <Button title="Add a new listing" onPress={() => this.props.navigation.navigate('ListingForm')} />
+          <Button title="View my listings" onPress={() => this.props.navigation.navigate('UserListings')} />
         </Card>
       </ScrollView>
     );

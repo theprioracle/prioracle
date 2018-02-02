@@ -1,0 +1,1409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingForm renders correctly 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <ListingForm
+    addListingFromForm={[Function]}
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": <KeyboardAvoidingView
+        behavior="padding"
+        keyboardVerticalOffset={0}
+        style={
+          Object {
+            "backgroundColor": "#e1e8e6",
+            "flex": 1,
+            "justifyContent": "flex-start",
+          }
+        }
+      >
+        <Card
+          title="Add a New Listing"
+        >
+          <FormLabel
+            labelStyle={
+              Object {
+                "color": "red",
+              }
+            }
+          >
+            Product Name
+          </FormLabel>
+          <FormInput
+            inputStyle={
+              Object {
+                "color": "black",
+              }
+            }
+            normalizeFontSize={true}
+            onChangeText={[Function]}
+            textAlign="center"
+          />
+          <FormLabel
+            labelStyle={
+              Object {
+                "color": "red",
+              }
+            }
+          >
+            Product Description
+          </FormLabel>
+          <FormInput
+            inputStyle={
+              Object {
+                "color": "black",
+              }
+            }
+            multiline={true}
+            normalizeFontSize={true}
+            onChangeText={[Function]}
+            textAlign="center"
+          />
+          <FormLabel
+            labelStyle={
+              Object {
+                "color": "red",
+              }
+            }
+          >
+            Product Category (/-separated)
+          </FormLabel>
+          <FormInput
+            inputStyle={
+              Object {
+                "color": "black",
+              }
+            }
+            normalizeFontSize={true}
+            onChangeText={[Function]}
+            textAlign="center"
+          />
+          <FormLabel
+            labelStyle={
+              Object {
+                "color": "red",
+              }
+            }
+          >
+            Product Condition
+          </FormLabel>
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="New"
+          >
+            <PickerItem
+              label="New"
+              value="New"
+            />
+            <PickerItem
+              label="Used"
+              value="Used"
+            />
+            <PickerItem
+              label="Like New"
+              value="Like New"
+            />
+          </Picker>
+          <FormLabel
+            labelStyle={
+              Object {
+                "color": "red",
+              }
+            }
+          >
+            Who pays for shipping?
+          </FormLabel>
+          <Picker
+            mode="dialog"
+            onValueChange={[Function]}
+            selectedValue="Buyer"
+          >
+            <PickerItem
+              label="Buyer"
+              value="Buyer"
+            />
+            <PickerItem
+              label="Seller"
+              value="Seller"
+            />
+          </Picker>
+        </Card>
+        <Button
+          buttonStyle={
+            Object {
+              "backgroundColor": "#d14f4f",
+            }
+          }
+          onPress={[Function]}
+          title="Crunch the numbers!"
+        />
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+        >
+          
+
+        </Text>
+      </KeyboardAvoidingView>,
+      "contentContainerStyle": Object {
+        "backgroundColor": "#e1e8e6",
+      },
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "behavior": "padding",
+        "children": Array [
+          <Card
+            title="Add a New Listing"
+          >
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Name
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Description
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              multiline={true}
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Category (/-separated)
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Condition
+            </FormLabel>
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue="New"
+            >
+              <PickerItem
+                label="New"
+                value="New"
+              />
+              <PickerItem
+                label="Used"
+                value="Used"
+              />
+              <PickerItem
+                label="Like New"
+                value="Like New"
+              />
+            </Picker>
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Who pays for shipping?
+            </FormLabel>
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue="Buyer"
+            >
+              <PickerItem
+                label="Buyer"
+                value="Buyer"
+              />
+              <PickerItem
+                label="Seller"
+                value="Seller"
+              />
+            </Picker>
+          </Card>,
+          <Button
+            buttonStyle={
+              Object {
+                "backgroundColor": "#d14f4f",
+              }
+            }
+            onPress={[Function]}
+            title="Crunch the numbers!"
+          />,
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            
+
+          </Text>,
+        ],
+        "keyboardVerticalOffset": 0,
+        "style": Object {
+          "backgroundColor": "#e1e8e6",
+          "flex": 1,
+          "justifyContent": "flex-start",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Name
+              </FormLabel>,
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />,
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Description
+              </FormLabel>,
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                multiline={true}
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />,
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Category (/-separated)
+              </FormLabel>,
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />,
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Condition
+              </FormLabel>,
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue="New"
+              >
+                <PickerItem
+                  label="New"
+                  value="New"
+                />
+                <PickerItem
+                  label="Used"
+                  value="Used"
+                />
+                <PickerItem
+                  label="Like New"
+                  value="Like New"
+                />
+              </Picker>,
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Who pays for shipping?
+              </FormLabel>,
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue="Buyer"
+              >
+                <PickerItem
+                  label="Buyer"
+                  value="Buyer"
+                />
+                <PickerItem
+                  label="Seller"
+                  value="Seller"
+                />
+              </Picker>,
+            ],
+            "title": "Add a New Listing",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Product Name",
+                "labelStyle": Object {
+                  "color": "red",
+                },
+              },
+              "ref": null,
+              "rendered": "Product Name",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputStyle": Object {
+                  "color": "black",
+                },
+                "normalizeFontSize": true,
+                "onChangeText": [Function],
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Product Description",
+                "labelStyle": Object {
+                  "color": "red",
+                },
+              },
+              "ref": null,
+              "rendered": "Product Description",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputStyle": Object {
+                  "color": "black",
+                },
+                "multiline": true,
+                "normalizeFontSize": true,
+                "onChangeText": [Function],
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Product Category (/-separated)",
+                "labelStyle": Object {
+                  "color": "red",
+                },
+              },
+              "ref": null,
+              "rendered": "Product Category (/-separated)",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "inputStyle": Object {
+                  "color": "black",
+                },
+                "normalizeFontSize": true,
+                "onChangeText": [Function],
+                "textAlign": "center",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Product Condition",
+                "labelStyle": Object {
+                  "color": "red",
+                },
+              },
+              "ref": null,
+              "rendered": "Product Condition",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <PickerItem
+                    label="New"
+                    value="New"
+                  />,
+                  <PickerItem
+                    label="Used"
+                    value="Used"
+                  />,
+                  <PickerItem
+                    label="Like New"
+                    value="Like New"
+                  />,
+                ],
+                "mode": "dialog",
+                "onValueChange": [Function],
+                "selectedValue": "New",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "New",
+                    "value": "New",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Used",
+                    "value": "Used",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Like New",
+                    "value": "Like New",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "children": "Who pays for shipping?",
+                "labelStyle": Object {
+                  "color": "red",
+                },
+              },
+              "ref": null,
+              "rendered": "Who pays for shipping?",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <PickerItem
+                    label="Buyer"
+                    value="Buyer"
+                  />,
+                  <PickerItem
+                    label="Seller"
+                    value="Seller"
+                  />,
+                ],
+                "mode": "dialog",
+                "onValueChange": [Function],
+                "selectedValue": "Buyer",
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Buyer",
+                    "value": "Buyer",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "label": "Seller",
+                    "value": "Seller",
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "buttonStyle": Object {
+              "backgroundColor": "#d14f4f",
+            },
+            "onPress": [Function],
+            "title": "Crunch the numbers!",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "accessible": true,
+            "allowFontScaling": true,
+            "children": "
+",
+            "ellipsizeMode": "tail",
+          },
+          "ref": null,
+          "rendered": "
+",
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+    "type": [MockFunction],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <KeyboardAvoidingView
+          behavior="padding"
+          keyboardVerticalOffset={0}
+          style={
+            Object {
+              "backgroundColor": "#e1e8e6",
+              "flex": 1,
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <Card
+            title="Add a New Listing"
+          >
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Name
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Description
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              multiline={true}
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Category (/-separated)
+            </FormLabel>
+            <FormInput
+              inputStyle={
+                Object {
+                  "color": "black",
+                }
+              }
+              normalizeFontSize={true}
+              onChangeText={[Function]}
+              textAlign="center"
+            />
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Product Condition
+            </FormLabel>
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue="New"
+            >
+              <PickerItem
+                label="New"
+                value="New"
+              />
+              <PickerItem
+                label="Used"
+                value="Used"
+              />
+              <PickerItem
+                label="Like New"
+                value="Like New"
+              />
+            </Picker>
+            <FormLabel
+              labelStyle={
+                Object {
+                  "color": "red",
+                }
+              }
+            >
+              Who pays for shipping?
+            </FormLabel>
+            <Picker
+              mode="dialog"
+              onValueChange={[Function]}
+              selectedValue="Buyer"
+            >
+              <PickerItem
+                label="Buyer"
+                value="Buyer"
+              />
+              <PickerItem
+                label="Seller"
+                value="Seller"
+              />
+            </Picker>
+          </Card>
+          <Button
+            buttonStyle={
+              Object {
+                "backgroundColor": "#d14f4f",
+              }
+            }
+            onPress={[Function]}
+            title="Crunch the numbers!"
+          />
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          >
+            
+
+          </Text>
+        </KeyboardAvoidingView>,
+        "contentContainerStyle": Object {
+          "backgroundColor": "#e1e8e6",
+        },
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "behavior": "padding",
+          "children": Array [
+            <Card
+              title="Add a New Listing"
+            >
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Name
+              </FormLabel>
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Description
+              </FormLabel>
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                multiline={true}
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Category (/-separated)
+              </FormLabel>
+              <FormInput
+                inputStyle={
+                  Object {
+                    "color": "black",
+                  }
+                }
+                normalizeFontSize={true}
+                onChangeText={[Function]}
+                textAlign="center"
+              />
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Product Condition
+              </FormLabel>
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue="New"
+              >
+                <PickerItem
+                  label="New"
+                  value="New"
+                />
+                <PickerItem
+                  label="Used"
+                  value="Used"
+                />
+                <PickerItem
+                  label="Like New"
+                  value="Like New"
+                />
+              </Picker>
+              <FormLabel
+                labelStyle={
+                  Object {
+                    "color": "red",
+                  }
+                }
+              >
+                Who pays for shipping?
+              </FormLabel>
+              <Picker
+                mode="dialog"
+                onValueChange={[Function]}
+                selectedValue="Buyer"
+              >
+                <PickerItem
+                  label="Buyer"
+                  value="Buyer"
+                />
+                <PickerItem
+                  label="Seller"
+                  value="Seller"
+                />
+              </Picker>
+            </Card>,
+            <Button
+              buttonStyle={
+                Object {
+                  "backgroundColor": "#d14f4f",
+                }
+              }
+              onPress={[Function]}
+              title="Crunch the numbers!"
+            />,
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+            >
+              
+
+            </Text>,
+          ],
+          "keyboardVerticalOffset": 0,
+          "style": Object {
+            "backgroundColor": "#e1e8e6",
+            "flex": 1,
+            "justifyContent": "flex-start",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "children": Array [
+                <FormLabel
+                  labelStyle={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                >
+                  Product Name
+                </FormLabel>,
+                <FormInput
+                  inputStyle={
+                    Object {
+                      "color": "black",
+                    }
+                  }
+                  normalizeFontSize={true}
+                  onChangeText={[Function]}
+                  textAlign="center"
+                />,
+                <FormLabel
+                  labelStyle={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                >
+                  Product Description
+                </FormLabel>,
+                <FormInput
+                  inputStyle={
+                    Object {
+                      "color": "black",
+                    }
+                  }
+                  multiline={true}
+                  normalizeFontSize={true}
+                  onChangeText={[Function]}
+                  textAlign="center"
+                />,
+                <FormLabel
+                  labelStyle={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                >
+                  Product Category (/-separated)
+                </FormLabel>,
+                <FormInput
+                  inputStyle={
+                    Object {
+                      "color": "black",
+                    }
+                  }
+                  normalizeFontSize={true}
+                  onChangeText={[Function]}
+                  textAlign="center"
+                />,
+                <FormLabel
+                  labelStyle={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                >
+                  Product Condition
+                </FormLabel>,
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue="New"
+                >
+                  <PickerItem
+                    label="New"
+                    value="New"
+                  />
+                  <PickerItem
+                    label="Used"
+                    value="Used"
+                  />
+                  <PickerItem
+                    label="Like New"
+                    value="Like New"
+                  />
+                </Picker>,
+                <FormLabel
+                  labelStyle={
+                    Object {
+                      "color": "red",
+                    }
+                  }
+                >
+                  Who pays for shipping?
+                </FormLabel>,
+                <Picker
+                  mode="dialog"
+                  onValueChange={[Function]}
+                  selectedValue="Buyer"
+                >
+                  <PickerItem
+                    label="Buyer"
+                    value="Buyer"
+                  />
+                  <PickerItem
+                    label="Seller"
+                    value="Seller"
+                  />
+                </Picker>,
+              ],
+              "title": "Add a New Listing",
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Product Name",
+                  "labelStyle": Object {
+                    "color": "red",
+                  },
+                },
+                "ref": null,
+                "rendered": "Product Name",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputStyle": Object {
+                    "color": "black",
+                  },
+                  "normalizeFontSize": true,
+                  "onChangeText": [Function],
+                  "textAlign": "center",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Product Description",
+                  "labelStyle": Object {
+                    "color": "red",
+                  },
+                },
+                "ref": null,
+                "rendered": "Product Description",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputStyle": Object {
+                    "color": "black",
+                  },
+                  "multiline": true,
+                  "normalizeFontSize": true,
+                  "onChangeText": [Function],
+                  "textAlign": "center",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Product Category (/-separated)",
+                  "labelStyle": Object {
+                    "color": "red",
+                  },
+                },
+                "ref": null,
+                "rendered": "Product Category (/-separated)",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "inputStyle": Object {
+                    "color": "black",
+                  },
+                  "normalizeFontSize": true,
+                  "onChangeText": [Function],
+                  "textAlign": "center",
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Product Condition",
+                  "labelStyle": Object {
+                    "color": "red",
+                  },
+                },
+                "ref": null,
+                "rendered": "Product Condition",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <PickerItem
+                      label="New"
+                      value="New"
+                    />,
+                    <PickerItem
+                      label="Used"
+                      value="Used"
+                    />,
+                    <PickerItem
+                      label="Like New"
+                      value="Like New"
+                    />,
+                  ],
+                  "mode": "dialog",
+                  "onValueChange": [Function],
+                  "selectedValue": "New",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "label": "New",
+                      "value": "New",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "label": "Used",
+                      "value": "Used",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "label": "Like New",
+                      "value": "Like New",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "function",
+                "props": Object {
+                  "children": "Who pays for shipping?",
+                  "labelStyle": Object {
+                    "color": "red",
+                  },
+                },
+                "ref": null,
+                "rendered": "Who pays for shipping?",
+                "type": [Function],
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <PickerItem
+                      label="Buyer"
+                      value="Buyer"
+                    />,
+                    <PickerItem
+                      label="Seller"
+                      value="Seller"
+                    />,
+                  ],
+                  "mode": "dialog",
+                  "onValueChange": [Function],
+                  "selectedValue": "Buyer",
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "label": "Buyer",
+                      "value": "Buyer",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "label": "Seller",
+                      "value": "Seller",
+                    },
+                    "ref": null,
+                    "rendered": null,
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+            ],
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "buttonStyle": Object {
+                "backgroundColor": "#d14f4f",
+              },
+              "onPress": [Function],
+              "title": "Crunch the numbers!",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "
+",
+              "ellipsizeMode": "tail",
+            },
+            "ref": null,
+            "rendered": "
+",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      "type": [MockFunction],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "context": Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+    },
+  },
+}
+`;

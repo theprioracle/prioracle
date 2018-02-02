@@ -7,6 +7,8 @@ const db = require('./db');
 const PORT = process.env.PORT || 8080;
 const app = new Koa();
 const indexRoutes = require('./routes');
+const passport = require('koa-passport');
+const session = require('koa-session');
 
 module.exports = app;
 
@@ -22,12 +24,26 @@ module.exports = app;
 // secrets are not yet implemented but we may want to use this in the future
 // if (process.env.NODE_ENV !== 'production') require('../secrets')
 
+// passport registration
+passport.serializeUser((user, done) => done(null, user.id));
+passport.deserializeUser(async (id, done) => {
+  let user = await db.models.user.findById(id)
+  done(null, user);
+})
 const createApp = () => {
   // logging middleware
   app.use(morgan('dev'));
 
   // body parsing middleware
   app.use(bodyParser());
+
+  // initialize sessions middleware
+  app.keys = ['some secret'];
+  app.use(session({}, app));
+
+  // initialize passport middleware
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   // attaches db to ctx obeject
   app.use(async (ctx, next) => {

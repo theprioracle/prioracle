@@ -3,11 +3,15 @@ const router = new Router();
 const listingRoutes = require('./listings');
 const userRoutes = require('./users');
 const priceRoutes = require('./prices');
+const authRoutes = require('./auth')
 
 router.use('/api/listings', listingRoutes.routes());
 router.use('/api/users',userRoutes.routes());
 router.use('/api/prices', priceRoutes.routes());
+router.use('/auth', authRoutes.routes());
 
+
+// default get
 router.get('/', async (ctx) => {
   ctx.body = {
     status: 'success',

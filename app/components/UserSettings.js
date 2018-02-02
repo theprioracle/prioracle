@@ -14,7 +14,7 @@ class UserSettings extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Card title='Settings'>
           <Text>We're gonna have some settings here real soon.</Text>
         </Card>
