@@ -17,7 +17,7 @@ import UserSettings from './app/components/UserSettings';
 import Signup from './app/components/Signup';
 
 // Use this link to access our backend!
-export const dbUrl = 'http://172.16.21.76:8080';
+export const dbUrl = 'http://172.16.23.244:8080';
 
 export default class App extends Component {
   constructor(props) {
