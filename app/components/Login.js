@@ -91,13 +91,6 @@ class Login extends Component {
           icon={{ name: 'add' }}
           raised={true}
           onPress={() => this.handleSignupButtonPress()} />
-        
-        {/* Debug button for skipping login (remove later!) */}
-        <Text>{"\n"}</Text>
-        <Button
-          title='DEBUG: Skip login'
-          raised={true}
-          onPress={() => this.props.navigation.navigate('ListingForm')} />
       </KeyboardAvoidingView>
     );
   }
