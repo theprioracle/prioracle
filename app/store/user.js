@@ -36,13 +36,25 @@ export const auth = (email, password, method, navigation) =>
    dispatch => {
      axios.post(dbUrl + '/auth/login', { email, password })
       .then(res => {
-        console.log('response from post is ', res.data)
         dispatch(getUser(res.data))
       })
       .then(() => navigation.navigate('UserHome'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
   }
+
+export const signup = (email, password, navigation, firstName, lastName) =>
+  dispatch => {
+    console.log('in signup thunk first and last', firstName, lastName)
+    axios.post(dbUrl + '/auth/signup', { email, password, firstName, lastName })
+     .then(res => {
+       console.log('response from post in signup thunk ', res.data)
+       dispatch(getUser(res.data))
+     })
+     .then(() => navigation.navigate('UserHome'))
+     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+ }
 
 export const logout = (navigation) =>
   dispatch => {
