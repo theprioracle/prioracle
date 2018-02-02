@@ -27,17 +27,17 @@ const removeUser = () => ({type: REMOVE_USER})
 
 export const me = () =>
   dispatch =>
-    axios.get('/auth/me')
+    axios.get(dbUrl + '/auth/me')
       .then(res =>
         dispatch(getUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
 export const auth = (email, password, method, navigation) =>
    dispatch => {
-     axios.post('http://172.16.21.76:8080/auth/login', { email, password })
+     axios.post(dbUrl + '/auth/login', { email, password })
       .then(res => {
         console.log('response from post is ', res.data)
-        //dispatch(getUser(res.data))
+        dispatch(getUser(res.data))
       })
       .then(() => navigation.navigate('ListingForm'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
@@ -46,7 +46,7 @@ export const auth = (email, password, method, navigation) =>
 
 export const logout = () =>
   dispatch =>
-    axios.post('/auth/logout')
+    axios.post(dbUrl + '/auth/logout')
       .then(_ => {
         dispatch(removeUser())
         history.push('/login')

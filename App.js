@@ -18,7 +18,7 @@ import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
 
 // Use this link to access our backend!
-export const dbUrl = 'http://localhost:8080';
+export const dbUrl = 'http://172.16.23.244:8080';
 
 export default class App extends Component {
   constructor(props) {

@@ -23,7 +23,7 @@ router.post('/login', async (ctx) => {
   // Otherwise, log the user in
   else {
     await ctx.login(user);
-    ctx.body = 'Succesful Login'
+    ctx.body = user;
   }
 })
 

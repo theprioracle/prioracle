@@ -49,12 +49,17 @@ class ListingForm extends Component {
       description: this.state.productDescription,
       category: this.state.productCategory,
       condition: this.state.selectedCondition,
-      sellerShips: this.state.selectedShipping === 'Seller' ? true : false,
+      sellerShips: this.state.selectedShipping === 'Seller' ? new Boolean(true) : new Boolean(false),
       status: 'inactive'
     };
 
+    const productListing = {
+      listing: listingObj,
+      user: this.props.user
+    };
+
     // Submit post request with our filled-in form data
-    this.props.addListingFromForm(listingObj, this.props.navigation);
+    this.props.addListingFromForm(productListing, this.props.navigation);
   }
 
   render() {
@@ -147,12 +152,18 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  };
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addListingFromForm(listing, navigation) {
       dispatch(addListing(listing, navigation));
     }
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(ListingForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ListingForm);
