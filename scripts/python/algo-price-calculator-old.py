@@ -47,11 +47,39 @@ X_vect = vectorizer.transform(X)
 algo_price = np.round( np.expm1(model.predict(X_vect)[0]) )
 algo_price_in_cents = int(algo_price * 100)
 
-## Send data back to node
-print(algo_price_in_cents)
-sys.stdout.flush()
+## Insert predicted price into valuations table
+# for convenience, collect vals to insert in a dictionary
+values_dict = {'int': algo_price_in_cents, 'str': last_listing['id']}
+
+# then, check if listing's id already exists in valuations table
+cur.execute(
+    'SELECT * FROM valuations WHERE "listingId" = (%s);', 
+    last_listing['id']
+)
+
+# if it does, update corresponding row with predicted price
+if len( cur.fetchall() ):
+    cur.execute('''
+        UPDATE valuations
+        SET "algoPrice" = %(int)s
+        WHERE "listingId" = %(str)s;
+    ''', 
+    values_dict)
+# else, create a new entry
+else: 
+    cur.execute('''
+        INSERT INTO valuations ("algoPrice", "listingId")
+        VALUES (%(int)s, %(str)s);
+    ''', 
+    values_dict)
+
+## Make the changes to the database persistent
+conn.commit()
 
 ## Close communication with the database
 cur.close()
 conn.close()
 
+## Send confirmation to node
+print('successfully calculated and saved algo price')
+sys.stdout.flush()

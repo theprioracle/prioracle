@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const router = new Router();
 const { Listing, Valuation, User } = require('../db/models');
+const spawn = require("child_process").spawn;
 
 module.exports = router;
 
@@ -50,17 +51,21 @@ router.put('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-  let price = await Valuation.create({
-    algoPrice: 25,
-    scraperPrice: 30
-  });
-  let listing = await Listing.findOrCreate({
-    where: ctx.request.body
-  });
-  price = await price.setListing(listing[0]);
-  listing = await Listing.findOrCreate({
-    where: ctx.request.body,
-    include: [{model: Valuation}]
-  });
-  ctx.body = listing;
+  const pyProg = spawn('python', ['../../scripts/python/algo-price-calculator.py']);
+  //pyProg.stdout.on('data', data => {
+  //console.log(data);
+    let price = await Valuation.create({
+      algoPrice: 25,
+      scraperPrice: 30
+    });
+    let listing = await Listing.findOrCreate({
+      where: ctx.request.body
+    });
+    price = await price.setListing(listing[0]);
+    listing = await Listing.findOrCreate({
+      where: ctx.request.body,
+      include: [{model: Valuation}]
+    });
+    ctx.body = listing;
+  //});
 })
