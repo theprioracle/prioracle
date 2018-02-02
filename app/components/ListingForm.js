@@ -115,10 +115,7 @@ class ListingForm extends Component {
               containerStyle={styles.buttonGroup}
               buttons={conditionButtons}
               selectedIndex={this.state.selectedCondition}
-              onPress={(index) => {
-                console.log("Selected condition index is", index);
-                this.setState({selectedCondition: Number(index)});
-              }}
+              onPress={(index) => this.setState({selectedCondition: Number(index)})}
             />
 
             {/* USER SHIPPING FIELD */}
@@ -127,10 +124,7 @@ class ListingForm extends Component {
               containerStyle={styles.buttonGroup}
               buttons={shippingButtons}
               selectedIndex={this.state.selectedShipping}
-              onPress={(index) => {
-                console.log("Selected shipping index is", index);
-                this.setState({selectedShipping: Number(index)});
-              }}
+              onPress={(index) => this.setState({selectedShipping: Number(index)})}
             />
           </Card>
           <Text>{'\n'}</Text>

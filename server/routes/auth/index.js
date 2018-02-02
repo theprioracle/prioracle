@@ -3,7 +3,6 @@ const router = new Router();
 const {User} = require('../../db/models')
 
 router.post('/login', async (ctx) => {
-  console.log('hits auth/login endpoint')
   // Look for user by email address
   let user = await User.findOne({
       where: {
@@ -37,7 +36,6 @@ router.post('/signup', async (ctx) => {
     where: {email: ctx.request.body.email}
   })
   if (!user) {
-    console.log('request.body is', ctx.request.body)
     user = await User.create(ctx.request.body);
     ctx.body = user;
   }
