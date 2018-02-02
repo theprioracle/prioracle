@@ -56,7 +56,6 @@ export const signup = (email, password, navigation, firstName, lastName) =>
 
 export const logout = (navigation) =>
   dispatch => {
-    console.log('navigation is ', navigation)
     axios.post(dbUrl + '/auth/logout')
       .then(_ => {
         dispatch(removeUser());
