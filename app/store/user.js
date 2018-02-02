@@ -45,10 +45,8 @@ export const auth = (email, password, method, navigation) =>
 
 export const signup = (email, password, navigation, firstName, lastName) =>
   dispatch => {
-    console.log('in signup thunk first and last', firstName, lastName)
     axios.post(dbUrl + '/auth/signup', { email, password, firstName, lastName })
      .then(res => {
-       console.log('response from post in signup thunk ', res.data)
        dispatch(getUser(res.data))
      })
      .then(() => navigation.navigate('UserHome'))
