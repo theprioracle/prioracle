@@ -1,8 +1,9 @@
 // app/store/index.js
 
-import {createStore, combineReducers, applyMiddleware, createLogger} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
 
 import listings from './listings';
 import user from './user';
@@ -13,7 +14,8 @@ const reducer = combineReducers({
 });
 
 const middleware = composeWithDevTools(applyMiddleware(
-  thunkMiddleware
+  thunkMiddleware,
+  logger
 ));
 
 const store = createStore(reducer, middleware);

@@ -14,7 +14,7 @@ class UserListing extends Component {
 
   render() {
     return this.props.listings && (
-      <ScrollView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Card title='Listings for PLACEHOLDER USER'>
           {
             this.props.listings.map(listing => (

@@ -1,5 +1,5 @@
-// app.components/UserHome.js
-// This view displays a user's home page after they have logged in.
+// app/components/UserSettings.js
+// This components allows a user to view or modify their settings.
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
@@ -7,16 +7,16 @@ import { Card } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 
-class UserHome extends Component {
+class UserSettings extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <Card title='Information for PLACEHOLDER USER'>
-          <Text>This is my information! And listings. And some other stuff.</Text>
+      <ScrollView style={styles.container}>
+        <Card title='Settings'>
+          <Text>We're gonna have some settings here real soon.</Text>
         </Card>
       </ScrollView>
     );
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    listings: state.listings
+    user: state.user
   };
 }
 
-export default connect(mapStateToProps)(UserHome);
+export default connect(mapStateToProps)(UserSettings);
