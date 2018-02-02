@@ -6,7 +6,6 @@ const googleRoutes = require('./google')
 router.use('/google', googleRoutes.routes());
 
 router.post('/login', async (ctx) => {
-  console.log('hits auth/login endpoint')
   // Look for user by email address
   let user = await User.findOne({
       where: {

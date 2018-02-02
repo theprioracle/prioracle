@@ -43,6 +43,7 @@ export const auth = (email, password, method, navigation) =>
 
   }
 
+
 export const signup = (email, password, navigation, firstName, lastName) =>
   dispatch => {
     axios.post(dbUrl + '/auth/signup', { email, password, firstName, lastName })

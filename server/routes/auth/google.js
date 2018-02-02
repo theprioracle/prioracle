@@ -39,7 +39,7 @@ module.exports = router
     User.find({where: {googleId}})
       .then(foundUser => (foundUser
         ? done(null, foundUser)
-        : User.create({firstName, lastName, email, googleId, role})
+        : User.create({firstName, lastName, email, googleId})
           .then(createdUser => done(null, createdUser))
       ))
       .catch(done)
@@ -48,10 +48,13 @@ module.exports = router
   passport.use(strategy)
 
   router.get('/', passport.authenticate('google', {scope: 'email'}))
+  
+  router.get('/callback', 
+    passport.authenticate('google', { failureRedirect: '/auth/google' }),
+    (ctx) => {
+      ctx.redirect('OAuthLogin://login?user=' + JSON.stringify(ctx.request.user))
+    }
+);
 
-  router.get('/callback', passport.authenticate('google', {
-    successRedirect: '/home',
-    failureRedirect: '/login'
-  }))
 
 // }

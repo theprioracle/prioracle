@@ -26,6 +26,8 @@ class Login extends Component {
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
     this.handleLoginButtonPress = this.handleLoginButtonPress.bind(this);
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
+    this.handleGoogleButtonPress = this.handleGoogleButtonPress.bind(this);
+    
   }
 
 
@@ -58,7 +60,11 @@ class Login extends Component {
   }
 
   handleSignupButtonPress() {
-    this.props.navigation.navigate('Signup')
+    this.props.navigation.navigate('Signup');
+  }
+
+  handleGoogleButtonPress() {
+    this.props.loginGoogle();
   }
 
   render() {
@@ -85,6 +91,12 @@ class Login extends Component {
           icon={{ name: 'hot-tub' }}
           raised={true}
           onPress={() => this.handleLoginButtonPress()} />
+        <Text>{'\n'}</Text>
+        <Button
+          title='Log In with Google'
+          icon={{ name: 'hot-tub' }}
+          raised={true}
+          onPress={() => this.handleGoogleButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'

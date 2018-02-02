@@ -53,12 +53,14 @@ const styles = StyleSheet.create({
 export const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
+    path: '/login',
     navigationOptions: {
       header: null
     }
   },
   UserHome: {
     screen: UserHome,
+    path: '/user',
     navigationOptions: ({ navigation }) => ({
       title: 'Home',
       header: <AppHeader navigation={navigation} />
