@@ -1,4 +1,13 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# ml algo
+.*
+train.tsv.7z
+test.tsv.7z
+sample_submission.csv.7z
+train.tsv
+seed.csv
+mercari.ipynb
+model-old.pkl
+prioracle.ipynb
 
 # expo
 .expo/
