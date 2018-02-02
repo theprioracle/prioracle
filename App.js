@@ -15,6 +15,7 @@ import UserHome from './app/components/UserHome';
 import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
 import Signup from './app/components/Signup';
+import Intro from './app/components/Intro';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -96,6 +97,12 @@ export const RootNavigator = StackNavigator({
   },
   Signup: {
     screen: Signup,
+    navigationOptions: {
+      header: null
+    }
+  },
+  Intro: {
+    screen: Intro,
     navigationOptions: {
       header: null
     }
