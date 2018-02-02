@@ -79,8 +79,9 @@ class ListingForm extends Component {
           behavior='padding' >
 
           <Card title='Add a New Listing' >
+            <Text style={{color: 'red'}}>{'\t'}* = required</Text>
             {/* PRODUCT NAME FIELD */}
-            <FormLabel labelStyle={styles.formLabel}>Product Name</FormLabel>
+            <FormLabel labelStyle={styles.formLabel}>Product Name* </FormLabel>
             <FormInput
               inputStyle={styles.inputText}
               textAlign={'center'}
