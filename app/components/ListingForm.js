@@ -66,8 +66,6 @@ class ListingForm extends Component {
       userId: this.props.user ? this.props.user.id : 0
     };
 
-    console.log("Before post");
-
     // Submit post request with our filled-in form data
     this.props.addListingFromForm(productListing, this.props.navigation);
   }
