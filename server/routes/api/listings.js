@@ -50,9 +50,12 @@ router.put('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-  let user = await User.findById(Number(ctx.request.body.user.id));
-  let userListings = await user.getListings();
+  let user = await User.findById(Number(ctx.request.body.userId));
+  let userListings = null;
   let updatedListings = [];
+
+  if (user)
+    userListings = await user.getListings();
 
   let price = await Valuation.create({
     algoPrice: 25,
@@ -66,8 +69,10 @@ router.post('/', async (ctx) => {
     where: ctx.request.body.listing,
     include: [{model: Valuation}]
   });
-  await userListings.push(listing[0]);
-  updatedListings = await userListings.map(listing => Number(listing.id));
-  await user.setListings(updatedListings);
+  if (user) {
+    await userListings.push(listing[0]);
+    updatedListings = await userListings.map(listing => Number(listing.id));
+    await user.setListings(updatedListings);
+  }
   ctx.body = listing;
 })

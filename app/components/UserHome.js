@@ -15,7 +15,7 @@ class UserHome extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Card title='Information for PLACEHOLDER USER'>
+        <Card title={`Information for ${this.props.user &&this.props.user.fullName}`}>
           <Text>This is my information! And listings. And some other stuff.{'\n\n'}</Text>
           <Text>What would you like to do?{'\n'}</Text>
           <Button title="Add a new listing" onPress={() => this.props.navigation.navigate('ListingForm')} />
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    listings: state.listings
+    user: state.user
   };
 }
 

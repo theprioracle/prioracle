@@ -24,18 +24,19 @@ class UserListing extends Component {
     axios.get(dbUrl + `/api/users/${this.props.user.id}/listings`)
       .then(res => res.data)
       .then(listings => this.setState({ userListings: listings }))
-      .then(console.log("Current UserListing local state:", this.state))
       .catch(error => console.log(error));
   }
 
   render() {
-    console.log('this.props.user:', this.props.user);
+    
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
           {
             this.state.userListings.map(listing => (
-              <Text key={listing.id}>
+              <Text 
+                key={listing.id}
+                onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
                 {listing.name}{'\n'}
               </Text>
             ))
