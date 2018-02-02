@@ -28,19 +28,6 @@ class Login extends Component {
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
   }
 
-  // async login(email, pass) {
-  //   try {
-  //       await firebase.auth()
-  //           .signInWithEmailAndPassword(email, pass);
-
-  //       console.log(email, 'is now logging in...');
-
-  //       this.props.navigation.navigate('ListingForm');
-
-  //   } catch (error) {
-  //       console.log(error.toString())
-  //   }
-  // }
 
   async signup(email, pass) {
     try {
@@ -67,7 +54,6 @@ class Login extends Component {
   }
 
   handleLoginButtonPress() {
-    console.log('in login', this.props.navigation)
     this.props.login(this.state.username, this.state.password, 'login', this.props.navigation);
   }
 
@@ -141,7 +127,6 @@ const styles = StyleSheet.create({
 const mapDispatchToProps = (dispatch) => {
   return {
     login (email, password, method, navigation) {
-      console.log('hits login dispatch', email, password, method)
       dispatch(auth(email, password, method, navigation))
     }
   }
