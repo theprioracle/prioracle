@@ -44,15 +44,18 @@ export const auth = (email, password, method, navigation) =>
 
   }
 
-export const logout = () =>
-  dispatch =>
+export const logout = (navigation) =>
+  dispatch => {
+    console.log('navigation is ', navigation)
     axios.post(dbUrl + '/auth/logout')
       .then(_ => {
-        dispatch(removeUser())
-        history.push('/login')
+        dispatch(removeUser());
+      })
+      .then(() => {
+        navigation.navigate('Main')
       })
       .catch(err => console.log(err))
-
+    }
 /**
  * REDUCER
  */
