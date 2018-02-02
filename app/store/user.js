@@ -1,6 +1,8 @@
 // app/store/user.js
 
 import axios from 'axios';
+import { dbUrl } from '../../App';
+
 
 /**
  * ACTION TYPES
@@ -25,25 +27,26 @@ const removeUser = () => ({type: REMOVE_USER})
 
 export const me = () =>
   dispatch =>
-    axios.get('/auth/me')
+    axios.get(dbUrl + '/auth/me')
       .then(res =>
         dispatch(getUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
-export const auth = (email, password, method) =>
-  dispatch =>
-    axios.post(`/auth/${method}`, { email, password })
+export const auth = (email, password, method, navigation) =>
+   dispatch => {
+     axios.post(dbUrl + '/auth/login', { email, password })
       .then(res => {
+        console.log('response from post is ', res.data)
         dispatch(getUser(res.data))
-        history.push('/home')
-      }, authError => { // rare example: a good use case for parallel (non-catch) error handler
-        dispatch(getUser({error: authError}))
       })
+      .then(() => navigation.navigate('UserHome'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+  }
 
 export const logout = () =>
   dispatch =>
-    axios.post('/auth/logout')
+    axios.post(dbUrl + '/auth/logout')
       .then(_ => {
         dispatch(removeUser())
         history.push('/login')

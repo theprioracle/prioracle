@@ -9,7 +9,7 @@ import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { dbUrl } from '../../App';
+import { dbUrl, RootNavigator } from '../../App';
 import { fetchListings } from '../store';
 
 class ProductAnalysis extends Component {

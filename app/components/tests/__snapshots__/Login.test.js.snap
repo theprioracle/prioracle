@@ -1,0 +1,613 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login renders correctly 1`] = `
+<View
+  keyboardVerticalOffset={0}
+  onLayout={[Function]}
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#d14f4f",
+        "flex": 1,
+        "justifyContent": "center",
+      },
+      Object {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "alignItems": "center",
+        "color": "white",
+        "fontSize": 35,
+      }
+    }
+  >
+    π r i o r a c l e
+    
+
+
+
+  </Text>
+  <View
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 1,
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 15,
+            },
+            Object {
+              "color": "white",
+            },
+            undefined,
+          ],
+        ]
+      }
+    >
+      Username
+    </Text>
+  </View>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "borderBottomColor": "#bdc6cf",
+        "borderBottomWidth": 1,
+        "marginLeft": 20,
+        "marginRight": 20,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+        ],
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      style={
+        Array [
+          Object {
+            "color": "#86939e",
+            "minHeight": 36,
+            "width": 750,
+          },
+          Object {
+            "fontSize": 17.5,
+          },
+          Object {
+            "color": "white",
+            "padding": 5,
+          },
+        ]
+      }
+      textAlign="center"
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {},
+        undefined,
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {},
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          Array [
+            Object {
+              "color": "#86939e",
+              "fontSize": 15,
+              "fontWeight": "bold",
+              "marginBottom": 1,
+              "marginLeft": 20,
+              "marginRight": 20,
+              "marginTop": 15,
+            },
+            Object {
+              "color": "white",
+            },
+            undefined,
+          ],
+        ]
+      }
+    >
+      Password
+    </Text>
+  </View>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "borderBottomColor": "#bdc6cf",
+        "borderBottomWidth": 1,
+        "marginLeft": 20,
+        "marginRight": 20,
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+        ],
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      onChangeText={[Function]}
+      secureTextEntry={true}
+      style={
+        Array [
+          Object {
+            "color": "#86939e",
+            "minHeight": 36,
+            "width": 750,
+          },
+          Object {
+            "fontSize": 17.5,
+          },
+          Object {
+            "color": "white",
+            "padding": 5,
+          },
+        ]
+      }
+      textAlign="center"
+    />
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    
+
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        Object {
+          "shadowColor": "rgba(0,0,0, .4)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 1,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 18,
+              },
+              Array [
+                Object {
+                  "marginRight": 10,
+                },
+                undefined,
+              ],
+              Object {
+                "fontFamily": "Material Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Log In
+        </Text>
+      </View>
+    </View>
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    
+
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        Object {
+          "shadowColor": "rgba(0,0,0, .4)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 1,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 18,
+              },
+              Array [
+                Object {
+                  "marginRight": 10,
+                },
+                undefined,
+              ],
+              Object {
+                "fontFamily": "Material Icons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Sign Up
+        </Text>
+      </View>
+    </View>
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    
+
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        Object {
+          "shadowColor": "rgba(0,0,0, .4)",
+          "shadowOffset": Object {
+            "height": 1,
+            "width": 1,
+          },
+          "shadowOpacity": 1,
+          "shadowRadius": 1,
+        },
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
+      accessible={true}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+      testID={undefined}
+      tvParallaxProperties={undefined}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          DEBUG: Skip login
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
