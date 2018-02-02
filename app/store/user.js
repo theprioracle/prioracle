@@ -38,7 +38,7 @@ export const auth = (email, password, method, navigation) =>
       .then(res => {
         dispatch(getUser(res.data))
       })
-      .then(() => navigation.navigate('UserHome'))
+      .then(() => navigation.navigate('Intro'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
   }
@@ -49,7 +49,7 @@ export const signup = (email, password, navigation, firstName, lastName) =>
      .then(res => {
        dispatch(getUser(res.data))
      })
-     .then(() => navigation.navigate('UserHome'))
+     .then(() => navigation.navigate('Intro'))
      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
  }
