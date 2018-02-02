@@ -14,6 +14,7 @@ import AppHeader from './app/components/AppHeader';
 import UserHome from './app/components/UserHome';
 import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
+import Signup from './app/components/Signup';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.21.76:8080';
@@ -92,5 +93,11 @@ export const RootNavigator = StackNavigator({
       title: 'Settings',
       header: <AppHeader navigation={navigation} />
     })
+  },
+  Signup: {
+    screen: Signup,
+    navigationOptions: {
+      header: null
+    }
   }
 });
