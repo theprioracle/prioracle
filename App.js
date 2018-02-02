@@ -9,16 +9,15 @@ import Login from './app/components/Login';
 import ListingForm from './app/components/ListingForm';
 import ProductAnalysis from './app/components/ProductAnalysis';
 import { Icon, Header } from 'react-native-elements';
-import * as firebase from "firebase";
-
 import store, { fetchListings } from  './app/store';
 import AppHeader from './app/components/AppHeader';
 import UserHome from './app/components/UserHome';
 import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
+import Signup from './app/components/Signup';
 
 // Use this link to access our backend!
-export const dbUrl = 'http://172.16.23.244:8080';
+export const dbUrl = 'http://172.16.21.76:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -28,18 +27,6 @@ export default class App extends Component {
   componentDidMount() {
     // Fetch all listings in our top-level component
     store.dispatch(fetchListings());
-
-    // // Testing out Firebase for our backend needs, remove once authentication is working with another method
-    // var config = {
-    //   apiKey: "AIzaSyCTQl0kvUuW-Q7VQgdISik_6I-72foW620",
-    //   authDomain: "prioracle-ad317.firebaseapp.com",
-    //   databaseURL: "https://prioracle-ad317.firebaseio.com",
-    //   projectId: "prioracle-ad317",
-    //   storageBucket: "prioracle-ad317.appspot.com",
-    //   messagingSenderId: "910431056594"
-    // };
-
-    // firebase.initializeApp(config);
   }
 
   render() {
@@ -106,5 +93,11 @@ export const RootNavigator = StackNavigator({
       title: 'Settings',
       header: <AppHeader navigation={navigation} />
     })
+  },
+  Signup: {
+    screen: Signup,
+    navigationOptions: {
+      header: null
+    }
   }
 });

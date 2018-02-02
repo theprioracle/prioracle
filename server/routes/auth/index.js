@@ -37,6 +37,7 @@ router.post('/signup', async (ctx) => {
     where: {email: ctx.request.body.email}
   })
   if (!user) {
+    console.log('request.body is', ctx.request.body)
     user = await User.create(ctx.request.body);
     ctx.body = user;
   }
