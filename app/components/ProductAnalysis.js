@@ -4,13 +4,16 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
-import { Button, FormLabel, FormInput, Card } from 'react-native-elements';
+import { Button, ButtonGroup, FormLabel, FormInput, Card } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { dbUrl, RootNavigator } from '../../App';
 import { fetchListings } from '../store';
+
+// Options for the button group for editing or posting the listing
+const optionGroup = ['Submit Listing', 'Edit'];
 
 class ProductAnalysis extends Component {
   constructor(props) {

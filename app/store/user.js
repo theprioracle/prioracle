@@ -36,23 +36,35 @@ export const auth = (email, password, method, navigation) =>
    dispatch => {
      axios.post(dbUrl + '/auth/login', { email, password })
       .then(res => {
-        console.log('response from post is ', res.data)
         dispatch(getUser(res.data))
       })
-      .then(() => navigation.navigate('UserHome'))
+      .then(() => navigation.navigate('Intro'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
   }
 
-export const logout = () =>
-  dispatch =>
+export const signup = (email, password, navigation, firstName, lastName) =>
+  dispatch => {
+    axios.post(dbUrl + '/auth/signup', { email, password, firstName, lastName })
+     .then(res => {
+       dispatch(getUser(res.data))
+     })
+     .then(() => navigation.navigate('Intro'))
+     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+ }
+
+export const logout = (navigation) =>
+  dispatch => {
     axios.post(dbUrl + '/auth/logout')
       .then(_ => {
-        dispatch(removeUser())
-        history.push('/login')
+        dispatch(removeUser());
+      })
+      .then(() => {
+        navigation.navigate('Main')
       })
       .catch(err => console.log(err))
-
+    }
 /**
  * REDUCER
  */

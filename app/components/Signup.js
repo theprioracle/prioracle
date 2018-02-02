@@ -7,9 +7,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
 import { Button, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator, NavigationActions } from 'react-navigation';
-
-import * as firebase from "firebase";
-import {auth} from '../store';
+import { signup } from '../store';
 import { connect } from 'react-redux';
 
 
@@ -19,28 +17,16 @@ class Login extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      firstName: '',
+      lastName: ''
     };
 
     this.handleUsernameInputChange = this.handleUsernameInputChange.bind(this);
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
-    this.handleLoginButtonPress = this.handleLoginButtonPress.bind(this);
+    this.handleFirstNameInputChange = this.handleFirstNameInputChange.bind(this);
+    this.handleLastNameInputChange = this.handleLastNameInputChange.bind(this);
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
-  }
-
-
-  async signup(email, pass) {
-    try {
-        await firebase.auth()
-          .createUserWithEmailAndPassword(email, pass);
-
-        console.log("Creating a new account for ", email);
-
-        this.props.navigation.navigate('ListingForm');
-
-    } catch (error) {
-        console.log(error.toString())
-    }
   }
 
   // Updates local component state with contents of username input field
@@ -53,12 +39,15 @@ class Login extends Component {
     this.setState({ password: text });
   }
 
-  handleLoginButtonPress() {
-    this.props.login(this.state.username, this.state.password, 'login', this.props.navigation);
+  handleFirstNameInputChange(text) {
+    this.setState({ firstName: text });
+  }
+  handleLastNameInputChange(text) {
+    this.setState({ lastName: text });
   }
 
   handleSignupButtonPress() {
-    this.props.navigation.navigate('Signup')
+    this.props.userSignup(this.state.username, this.state.password, this.props.navigation, this.state.firstName, this.state.lastName)
   }
 
   render() {
@@ -78,13 +67,17 @@ class Login extends Component {
           textAlign={'center'}          
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
+        <FormLabel labelStyle={styles.inputLabel}>First Name</FormLabel>
+        <FormInput
+          inputStyle={styles.inputText}
+          textAlign={'center'}          
+          onChangeText={text => this.handleFirstNameInputChange(text)} />
+        <FormLabel labelStyle={styles.inputLabel}>Last Name</FormLabel>
+        <FormInput
+          inputStyle={styles.inputText}
+          textAlign={'center'}          
+          onChangeText={text => this.handleLastNameInputChange(text)} />
 
-        <Text>{'\n'}</Text>
-        <Button
-          title='Log In'
-          icon={{ name: 'hot-tub' }}
-          raised={true}
-          onPress={() => this.handleLoginButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'
@@ -119,8 +112,8 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login (email, password, method, navigation) {
-      dispatch(auth(email, password, method, navigation))
+    userSignup (email, password, method, navigation, firstName, lastName) {
+      dispatch(signup(email, password, method, navigation, firstName, lastName))
     }
   }
 }

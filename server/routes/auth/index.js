@@ -3,7 +3,6 @@ const router = new Router();
 const {User} = require('../../db/models')
 
 router.post('/login', async (ctx) => {
-  console.log('hits auth/login endpoint')
   // Look for user by email address
   let user = await User.findOne({
       where: {

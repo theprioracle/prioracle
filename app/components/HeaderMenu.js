@@ -5,6 +5,8 @@ import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, StyleSheet} from 'react-native';
 import { Icon } from 'react-native-elements';
 import ModalDropdown from 'react-native-modal-dropdown';
+import {logout} from '../store';
+import { connect } from 'react-redux';
 
 const menuOptions = [
   'Add New Listing',      // ListingForm
@@ -13,7 +15,7 @@ const menuOptions = [
   'Logout'
 ];
 
-export default class HeaderMenu extends Component {
+class HeaderMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +32,7 @@ export default class HeaderMenu extends Component {
       this.props.navigation.navigate('Settings');
     else if (value === 'Logout') {
       // Handle user logging out
-      this.props.navigation.navigate('Main');
+      this.props.logoutUser(this.props.navigation);
     }
   }
 
@@ -61,3 +63,13 @@ const styles = StyleSheet.create({
     color: 'red'
   }
 });
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser (navigation) {
+      dispatch(logout(navigation))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(HeaderMenu);

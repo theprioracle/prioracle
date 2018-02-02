@@ -5,10 +5,16 @@
 import React, { Component } from 'react';
 import { Alert, StyleSheet, Text, KeyboardAvoidingView, Picker, ScrollView } from 'react-native';
 import { StackNavigator, NavigationActions } from 'react-navigation';
-import { Card, Button, FormLabel, FormInput, FormValidationMessage, Header } from 'react-native-elements';
+import { Card, Button, ButtonGroup, FormLabel, FormInput, FormValidationMessage, Header } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import { addListing } from '../store';
+
+// Buttons for selecting product condition in ButtonGroup
+const conditionButtons = ['New', 'Like New', 'Good', 'Fair', 'Poor'];
+
+// Buttons for selecting product shipping handler in ButtonGroup
+const shippingButtons = ['Buyer', 'Seller'];
 
 class ListingForm extends Component {
   constructor(props) {
@@ -16,10 +22,11 @@ class ListingForm extends Component {
 
     this.state = {
       productName: '',
+      productBrand: '',
       productDescription: '',
       productCategory: '',
-      selectedCondition: 'New',
-      selectedShipping: 'Buyer'
+      selectedCondition: 0,
+      selectedShipping: 0
     };
 
     this.showErrorAlert = this.showErrorAlert.bind(this);
@@ -46,16 +53,17 @@ class ListingForm extends Component {
     // Create new listing object with our form data
     const listingObj = {
       name: this.state.productName,
+      brand: this.state.productBrand,
       description: this.state.productDescription,
       category: this.state.productCategory,
-      condition: this.state.selectedCondition,
-      sellerShips: this.state.selectedShipping === 'Seller' ? new Boolean(true) : new Boolean(false),
+      condition: conditionButtons[this.state.selectedCondition],
+      sellerShips: shippingButtons[this.state.selectedShipping] === 'Seller' ? true : false,
       status: 'inactive'
     };
 
     const productListing = {
       listing: listingObj,
-      user: this.props.user
+      userId: this.props.user ? this.props.user.id : 0
     };
 
     // Submit post request with our filled-in form data
@@ -63,6 +71,7 @@ class ListingForm extends Component {
   }
 
   render() {
+
     return (
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <KeyboardAvoidingView 
@@ -70,12 +79,20 @@ class ListingForm extends Component {
           behavior='padding' >
 
           <Card title='Add a New Listing' >
+            <Text style={{color: 'red'}}>{'\t'}* = required</Text>
             {/* PRODUCT NAME FIELD */}
-            <FormLabel labelStyle={styles.formLabel}>Product Name</FormLabel>
+            <FormLabel labelStyle={styles.formLabel}>Product Name* </FormLabel>
             <FormInput
               inputStyle={styles.inputText}
               textAlign={'center'}
               onChangeText={text => this.setState({productName: text})} />
+
+            {/* PRODUCT BRAND FIELD */}
+            <FormLabel labelStyle={styles.formLabel}>Product Brand</FormLabel>
+            <FormInput
+              inputStyle={styles.inputText}
+              textAlign={'center'}
+              onChangeText={text => this.setState({productBrand: text})} />
 
             {/* PRODUCT DESCRIPTION FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Description</FormLabel>
@@ -95,24 +112,23 @@ class ListingForm extends Component {
 
             {/* PRODUCT CONDITION FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Condition</FormLabel>
-            <Picker
-              selectedValue={this.state.selectedCondition}
-              onValueChange={(itemValue) => this.setState({selectedCondition: itemValue})}>
-              <Picker.Item label="New" value="New" />
-              <Picker.Item label="Used" value="Used" />
-              <Picker.Item label="Like New" value="Like New" />
-            </Picker>
+            <ButtonGroup
+              containerStyle={styles.buttonGroup}
+              buttons={conditionButtons}
+              selectedIndex={this.state.selectedCondition}
+              onPress={(index) => this.setState({selectedCondition: Number(index)})}
+            />
 
             {/* USER SHIPPING FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Who pays for shipping?</FormLabel>
-            <Picker
-              selectedValue={this.state.selectedShipping}
-              onValueChange={(itemValue) => this.setState({selectedShipping: itemValue})}>
-              <Picker.Item label="Buyer" value="Buyer" />
-              <Picker.Item label="Seller" value="Seller" />
-            </Picker>
+            <ButtonGroup
+              containerStyle={styles.buttonGroup}
+              buttons={shippingButtons}
+              selectedIndex={this.state.selectedShipping}
+              onPress={(index) => this.setState({selectedShipping: Number(index)})}
+            />
           </Card>
-          
+          <Text>{'\n'}</Text>
           <Button
             buttonStyle={styles.submitButton}
             title='Crunch the numbers!'
@@ -145,7 +161,11 @@ const styles = StyleSheet.create({
     },
     inputText: {
       flex: 1,
-      color: 'black'
+      color: 'black',
+      justifyContent: 'center'
+    },
+    buttonGroup: {
+      height: 60
     },
     submitButton: {
       backgroundColor: '#d14f4f'
