@@ -1,6 +1,7 @@
 const Router = require('koa-router');
 const router = new Router();
 const { Listing, Valuation, User } = require('../../db/models');
+const { scrapePrice } = require('../../scraper');
 
 module.exports = router;
 
@@ -68,7 +69,11 @@ router.put('/:id', async (ctx) => {
 router.post('/', async (ctx) => {
   let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = await user.getListings();
+  let listingInfo = ctx.request.body.listing;
   let updatedListings = []; 
+
+  let scraperPrice = await scrapePrice(listingInfo.name, listingInfo.condition);
+  console.log("SCRAPED PRICE:", scraperPrice);
   
   let price = await Valuation.create({
     algoPrice: 2 * 100,//pythonOutput,//2 * Number( data.toString() ),
