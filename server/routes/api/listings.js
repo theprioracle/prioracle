@@ -1,5 +1,7 @@
 const Router = require('koa-router');
 const router = new Router();
+const path = require('path')
+const { spawn } = require('child_process');
 const { Listing, Valuation, User } = require('../../db/models');
 const { scrapePrice } = require('../../scraper');
 
@@ -7,18 +9,16 @@ module.exports = router;
 
 let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
-let runPy = new Promise(function(success, nosuccess) {
-  const { spawn } = require('child_process');
+let runPy = new Promise((resolve, reject) => {
   const pyprog = spawn(
-    'python', 
-    ['/Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/algo-price-calculator.py']
-  ); // use path.resolve() for relative paths
-  
+    'python',
+    ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
+  );
   pyprog.stdout.on('data', (data) => {
-    success(data);
+    resolve(data);
   });
   pyprog.stderr.on('data', (data) => {
-    nosuccess(data);
+    reject(data);
   });
 });
 
@@ -70,18 +70,19 @@ router.post('/', async (ctx) => {
   let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = await user.getListings();
   let listingInfo = ctx.request.body.listing;
-  let updatedListings = []; 
+  let updatedListings = [];
 
   let scraperPrice = await scrapePrice(listingInfo.name, listingInfo.condition);
-  console.log("SCRAPED PRICE:", scraperPrice);
-  
+
+  const pythonOutput = await runPy.then((fromRunpy) => {
+    return fromRunpy.toString();
+  })
+
   let price = await Valuation.create({
-    algoPrice: 2 * 100,//pythonOutput,//2 * Number( data.toString() ),
-    /*algoPrice: python.stdout.on('data', (data) => {
-      return Number( data.toString() );
-    }),*/
-    scraperPrice: 0
+    algoPrice: 2 * pythonOutput,
+    scraperPrice: scraperPrice.mean
   });
+
   let listing = await Listing.findOrCreate({
     where: ctx.request.body.listing
   });
@@ -90,8 +91,10 @@ router.post('/', async (ctx) => {
     where: ctx.request.body.listing,
     include: [{model: Valuation}]
   });
-  await userListings.push(listing[0]);
-  updatedListings = await userListings.map(listing => Number(listing.id));
-  await user.setListings(updatedListings);
+  if (user) {
+    await userListings.push(listing[0]);
+    updatedListings = await userListings.map(listing => Number(listing.id));
+    await user.setListings(updatedListings);
+  }
   ctx.body = listing;
 })

@@ -1,24 +1,23 @@
-var express = require('express');
 const {OperationHelper} = require('apac');
 
-let avgPrice = 0, count = 0, min = 0, max = 0, mean = 0;
-
-var OpHelper = new OperationHelper({
+const OpHelper = new OperationHelper({
   awsId: 'AKIAJVKS4SHSLFGXRFFA',
   awsSecret: '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',
   assocId: 'krisp1984-20',
   locale: 'US'
 });
 
-function scrapePrice(keyword, condition) {
+async function scrapePrice(keyword, condition) {
 
-  OpHelper.execute('ItemSearch', {
+  let avgPrice = 0, count = 0, min = 0, max = 0, mean = 0;
+
+  let response = await OpHelper.execute('ItemSearch', {
     'SearchIndex': 'All',
     'Keywords': keyword,
     'ResponseGroup': 'ItemAttributes, Offers',
     'ItemPage': 1
-  })
-  .then((response) => {
+  });
+
     let tempData = response.result.ItemSearchResponse.Items.Item;
     tempData.forEach(function(value, index) {
       let price = +value.OfferSummary.LowestNewPrice.Amount;
@@ -38,7 +37,7 @@ function scrapePrice(keyword, condition) {
       mean = (mean*8)/10;
     else if(condition === "Fair")
       mean = (mean*7)/10;
-    else if(contion === "Poor")
+    else if(condition === "Poor")
       mean = (mean*6)/10;
 
     return {
@@ -46,10 +45,7 @@ function scrapePrice(keyword, condition) {
       max: max/100,
       mean
     };
-  })
-  .catch((err) => {
-    console.error("Something went wrong! ", err);
-  });
+
 }
 
 module.exports = {scrapePrice};
