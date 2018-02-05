@@ -2,7 +2,6 @@ const Router = require('koa-router');
 const router = new Router();
 const path = require('path')
 const { spawn } = require('child_process');
-const { Listing, Valuation, User } = require('../db/models');
 const { Listing, Valuation, User } = require('../../db/models');
 
 module.exports = router;
@@ -12,7 +11,7 @@ let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand',
 let runPy = new Promise((resolve, reject) => { 
   const pyprog = spawn(
     'python', 
-    ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
+    [path.resolve('scripts/python/algo-price-calculator.py')]
   );  
   pyprog.stdout.on('data', (data) => {
     resolve(data);
@@ -45,29 +44,8 @@ router.get('/:id', async (ctx) => {
   })
 })
 
-router.put('/:id', async (ctx) => {
-  let listing = await Listing.findOne({
-    where: {
-      id: ctx.params.id
-    },
-    include: [{model: Valuation}]
-  });
-  listing = await listing.update(
-    ctx.request.body
-  )
-  prices = await listing.getValuations()
-
-  // we can then update our most recent price instance for this listing
-  let price = await prices[prices.length-1].update({
-    // these values are hard-coded now but should come from our algorithm/scraper
-    algoPrice: 10,
-    scraperPrice: 14
-  })
-  ctx.body = listing;
-})
-
-router.post('/', async (ctx) => {
-  let user = await User.findById(Number(ctx.request.body.user.id));
+router.post('/', async (ctx) => { 
+  let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = null;
   let updatedListings = [];
   if (user)
