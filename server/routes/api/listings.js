@@ -2,7 +2,6 @@ const Router = require('koa-router');
 const router = new Router();
 const path = require('path')
 const { spawn } = require('child_process');
-const { Listing, Valuation, User } = require('../db/models');
 const { Listing, Valuation, User } = require('../../db/models');
 const { scrapePrice } = require('../../scraper');
 
@@ -12,16 +11,9 @@ let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand',
 
 let runPy = new Promise((resolve, reject) => {
   const pyprog = spawn(
-<<<<<<< HEAD
-    'python',
-    ['/Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/algo-price-calculator.py']
-  ); // use path.resolve() for relative paths
-
-=======
     'python',
     ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
   );
->>>>>>> master
   pyprog.stdout.on('data', (data) => {
     resolve(data);
   });
