@@ -2,13 +2,28 @@
 // This view displays a user's listings.
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import { StyleSheet, Text, FlatList, ScrollView, View } from 'react-native';
+import { Card, Divider, List, ListItem } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { dbUrl } from '../../App';
+
+// // Subcomponent for rendering a single listing
+// class UserListingItem extends Component {
+//   constructor(props) {
+//     super(props);
+
+//   }
+
+//   render() {
+//     return (
+//       <View style={styles.listingItem}>
+//         <Text>{this.props.title}</Text>
+//       </View>
+//     )
+// }
 
 class UserListing extends Component {
   constructor(props) {
@@ -32,15 +47,18 @@ class UserListing extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
+
+          {/* <List>
           {
             this.state.userListings.map(listing => (
-              <Text 
+              <ListItem 
                 key={listing.id}
-                onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
-                {listing.name}{'\n'}
-              </Text>
+                title={listing.name}
+                onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })}
+              />
             ))
           }
+          </List> */}
         </Card>
       </ScrollView>
     );
@@ -52,6 +70,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#e1e8e6'
+  },
+  listingItem: {
+    flex: 1,
+    flexDirection: 'row'
   }
 });
 
