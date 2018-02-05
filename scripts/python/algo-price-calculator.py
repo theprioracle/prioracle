@@ -4,8 +4,8 @@ import numpy as np
 import sys
 
 ## Load vectorizer and model
-vectorizer = pickle.load( open('/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/vectorizer.pkl', 'rb') )
-model = pickle.load( open('/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/model.pkl', 'rb') )
+vectorizer = pickle.load( open('//Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/vectorizer.pkl', 'rb') )
+model = pickle.load( open('/Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/model.pkl', 'rb') )
 
 ## Connect to the database
 conn = psycopg2.connect('dbname=prioracle')

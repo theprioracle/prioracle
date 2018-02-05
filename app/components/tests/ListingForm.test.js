@@ -24,6 +24,4 @@ test('ListingForm renders correctly', () => {
     { context: { store: mockStore(initialState) } },
   );
   expect(wrapper.dive()).toMatchSnapshot();
-  // const tree = renderer.create(<ListingForm />).toJSON();
-  // expect(tree).toMatchSnapshot();
 });

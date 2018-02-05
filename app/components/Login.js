@@ -1,7 +1,5 @@
 // app.components/Login.js
 // Landing view for our app!
-// NOTE: Home view is currently just a login screen, could add in 
-// additional views for introducing what our app does.
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
