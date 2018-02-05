@@ -3,16 +3,17 @@ const router = new Router();
 const path = require('path')
 const { spawn } = require('child_process');
 const { Listing, Valuation, User } = require('../../db/models');
+const { scrapePrice } = require('../../scraper');
 
 module.exports = router;
 
 let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
-let runPy = new Promise((resolve, reject) => { 
+let runPy = new Promise((resolve, reject) => {
   const pyprog = spawn(
     'python', 
     [path.resolve('scripts/python/algo-price-calculator.py')]
-  );  
+  );
   pyprog.stdout.on('data', (data) => {
     resolve(data);
   });
@@ -44,12 +45,13 @@ router.get('/:id', async (ctx) => {
   })
 })
 
-router.post('/', async (ctx) => { 
+router.post('/', async (ctx) => {
   let user = await User.findById(Number(ctx.request.body.userId));
-  let userListings = null;
+  let userListings = await user.getListings();
+  let listingInfo = ctx.request.body.listing;
   let updatedListings = [];
-  if (user)
-    userListings = await user.getListings();
+
+  let scraperPrice = await scrapePrice(listingInfo.name, listingInfo.condition);
 
   const pythonOutput = await runPy.then((fromRunpy) => {
     return fromRunpy.toString();
@@ -57,8 +59,9 @@ router.post('/', async (ctx) => {
 
   let price = await Valuation.create({
     algoPrice: 2 * pythonOutput,
-    scraperPrice: 0
+    scraperPrice: scraperPrice.mean
   });
+
   let listing = await Listing.findOrCreate({
     where: ctx.request.body.listing
   });

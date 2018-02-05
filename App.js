@@ -18,9 +18,11 @@ import Signup from './app/components/Signup';
 import Intro from './app/components/Intro';
 
 // Use this link to access our backend!
+<<<<<<< HEAD
 //export const dbUrl = 'http://172.16.23.244:8080';
 //export const dbUrl = 'http://172.16.21.255:8080';
-export const dbUrl = 'http://192.168.0.6:8080';
+export const dbUrl = 'http://172.16.23.11:8080';
+//export const dbUrl = 'http://192.168.1.4:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -42,7 +44,7 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     flex: 1,
     justifyContent: 'space-between',
     backgroundColor: '#d14f4f'
