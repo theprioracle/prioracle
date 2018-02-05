@@ -10,10 +10,10 @@ let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand',
 let runPy = new Promise(function(success, nosuccess) {
   const { spawn } = require('child_process');
   const pyprog = spawn(
-    'python', 
+    'python',
     ['/Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/algo-price-calculator.py']
   ); // use path.resolve() for relative paths
-  
+
   pyprog.stdout.on('data', (data) => {
     success(data);
   });
@@ -70,18 +70,20 @@ router.post('/', async (ctx) => {
   let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = await user.getListings();
   let listingInfo = ctx.request.body.listing;
-  let updatedListings = []; 
+  let updatedListings = [];
 
   let scraperPrice = await scrapePrice(listingInfo.name, listingInfo.condition);
-  console.log("SCRAPED PRICE:", scraperPrice);
-  
+
   let price = await Valuation.create({
     algoPrice: 2 * 100,//pythonOutput,//2 * Number( data.toString() ),
     /*algoPrice: python.stdout.on('data', (data) => {
       return Number( data.toString() );
     }),*/
-    scraperPrice: 0
+    scraperPrice: scraperPrice.mean
   });
+
+  console.log(scraperPrice);
+
   let listing = await Listing.findOrCreate({
     where: ctx.request.body.listing
   });
