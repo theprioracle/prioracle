@@ -1,26 +1,24 @@
 const Router = require('koa-router');
 const router = new Router();
+const path = require('path')
+const { spawn } = require('child_process');
 const { Listing, Valuation, User } = require('../db/models');
-//const { spawn } = require("child_process");
 const { Listing, Valuation, User } = require('../../db/models');
 
 module.exports = router;
 
 let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
-let runPy = new Promise(function(success, nosuccess) {
-  const { spawn } = require('child_process');
+let runPy = new Promise((resolve, reject) => { 
   const pyprog = spawn(
     'python', 
     ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
-  ); // use path.resolve() for relative paths
-  
+  );  
   pyprog.stdout.on('data', (data) => {
-    success(data);
-    // pyProg.push(data);
+    resolve(data);
   });
   pyprog.stderr.on('data', (data) => {
-    nosuccess(data);
+    reject(data);
   });
 });
 
@@ -69,57 +67,19 @@ router.put('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-<<<<<<< HEAD:server/routes/listings.js
   let user = await User.findById(Number(ctx.request.body.user.id));
-  let userListings = await user.getListings();
-  let updatedListings = []; 
-  
-  /*const python = spawn(
-    'python', 
-    ['../../scripts/python/algo-price-calculator.py']
-  );*/
-  /*python.stdout.on('data', data => {
-    const pythonOutput = Number( data.toString() );
-  });*/
-
-  /* const fromRunPy = await runPy();
-  const pythonOutput = await runPythonPromise();*/ 
-  const pythonOutput = await runPy.then(function(fromRunpy) {
-    console.log(fromRunpy.toString());
-    return fromRunpy.toString();
-  })
-  //.then(async pythonOutput => {
-      let price = await Valuation.create({
-        algoPrice: 2 * pythonOutput,//2 * Number( data.toString() ),
-        /*algoPrice: python.stdout.on('data', (data) => {
-          return Number( data.toString() );
-        }),*/
-        scraperPrice: 0
-      });
-      let listing = await Listing.findOrCreate({
-        where: ctx.request.body.listing
-      });
-      price = await price.setListing(listing[0]);
-      listing = await Listing.findOrCreate({
-        where: ctx.request.body.listing,
-        include: [{model: Valuation}]
-      });
-      await userListings.push(listing[0]);
-      updatedListings = await userListings.map(listing => Number(listing.id));
-      await user.setListings(updatedListings);
-      ctx.body = listing;
-  //});
-=======
-  let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = null;
   let updatedListings = [];
-
   if (user)
     userListings = await user.getListings();
 
+  const pythonOutput = await runPy.then((fromRunpy) => {
+    return fromRunpy.toString();
+  })
+
   let price = await Valuation.create({
-    algoPrice: 25,
-    scraperPrice: 30
+    algoPrice: 2 * pythonOutput,
+    scraperPrice: 0
   });
   let listing = await Listing.findOrCreate({
     where: ctx.request.body.listing
@@ -134,6 +94,5 @@ router.post('/', async (ctx) => {
     updatedListings = await userListings.map(listing => Number(listing.id));
     await user.setListings(updatedListings);
   }
-  ctx.body = listing;
->>>>>>> master:server/routes/api/listings.js
+  ctx.body = listing; 
 })
