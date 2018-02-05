@@ -1,5 +1,5 @@
-// app/components/UserSettings.js
-// This components allows a user to view or modify their settings.
+// app/components/Intro.js
+// This components displays a view to explain what Prioracle is all about.
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';

@@ -10,8 +10,8 @@ import { connect } from 'react-redux';
 
 const menuOptions = [
   'Add New Listing',      // ListingForm
-  'View Your Listings',
-  'Settings',
+  'View Your Listings',   // UserListings
+  'Settings',             // UserSettings
   'Logout'
 ];
 

@@ -94,5 +94,5 @@ router.post('/', async (ctx) => {
     updatedListings = await userListings.map(listing => Number(listing.id));
     await user.setListings(updatedListings);
   }
-  ctx.body = listing; 
+  ctx.body = listing;
 })

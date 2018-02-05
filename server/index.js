@@ -38,6 +38,7 @@ const createApp = () => {
   app.use(bodyParser());
 
   // initialize sessions middleware
+  // some secret should come from a secrets.js file
   app.keys = ['some secret'];
   app.use(session({}, app));
 
