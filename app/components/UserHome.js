@@ -13,20 +13,26 @@ class UserHome extends Component {
   }
 
   render() {
+
+    const hours = new Date().getHours();
+    const greeting = hours < 12? 'Good morning' : 
+      hours < 17 ? 'Good afternoon' : 'Good evening';
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card containerStyle={{alignItems: 'stretch'}} titleStyle={{ color: 'red' }} title={`Information for ${this.props.user &&this.props.user.fullName}`}>
-          <Text>This is my information! And listings. And some other stuff.{'\n\n'}</Text>
-          <Text>What would you like to do?{'\n'}</Text>
+          <Text>{'\n'}{greeting}, {`${this.props.user.firstName}`}. What would you like to do today?{'\n'}</Text>
           <Button
             buttonStyle={styles.optionButton}
             textStyle={styles.optionText}
+            icon={{ name: 'add-circle', color: 'black', size: 24 }}
             title="Add a new listing"
             onPress={() => this.props.navigation.navigate('ListingForm')} 
           />
           <Button 
             buttonStyle={styles.optionButton}
             textStyle={styles.optionText}
+            icon={{ name: 'photo-album', color: 'black', size: 24 }}
             title="View my listings" 
             onPress={() => this.props.navigation.navigate('UserListings')} 
           />
