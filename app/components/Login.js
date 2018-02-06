@@ -69,13 +69,13 @@ class Login extends Component {
         <FormInput
           inputStyle={styles.inputText}
           textAlign={'center'}
-          autoCapitalize={false}
+          autoCapitalize='none'
           onChangeText={text => this.handleUsernameInputChange(text)} />
         <FormLabel labelStyle={styles.inputLabel}>Password</FormLabel>
         <FormInput
           inputStyle={styles.inputText}
           textAlign={'center'}
-          autoCapitalize={false}
+          autoCapitalize='none'
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
 
