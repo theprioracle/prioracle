@@ -16,10 +16,12 @@ import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
 import Signup from './app/components/Signup';
 import Intro from './app/components/Intro';
+import Listing from './app/components/Listing';
+
 
 // Use this link to access our backend!
-export const dbUrl = 'http://172.16.23.11:8080';
-//export const dbUrl = 'http://192.168.1.4:8080';
+// export const dbUrl = 'http://172.16.23.11:8080';
+export const dbUrl = 'http://192.168.1.16:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -58,6 +60,13 @@ export const RootNavigator = StackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  Listing: {
+    screen: Listing,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Home',
+      header: <AppHeader navigation={navigation} />
+    })
   },
   UserHome: {
     screen: UserHome,

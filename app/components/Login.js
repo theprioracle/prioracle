@@ -56,12 +56,12 @@ class Login extends Component {
   }
 
   handleSignupButtonPress() {
-    this.props.navigation.navigate('Signup')
+    this.props.navigation.navigate('Listing', { id: 1 });
   }
 
   render() {
     return (
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         style={styles.container}
         behavior='padding' >
         <Text style={styles.titleText}>π r i o r a c l e{'\n\n\n'}</Text>
@@ -73,7 +73,7 @@ class Login extends Component {
         <FormLabel labelStyle={styles.inputLabel}>Password</FormLabel>
         <FormInput
           inputStyle={styles.inputText}
-          textAlign={'center'}          
+          textAlign={'center'}
           onChangeText={text => this.handlePasswordInputChange(text)}
           secureTextEntry={true} />
 
@@ -95,8 +95,8 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
+  container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#d14f4f'

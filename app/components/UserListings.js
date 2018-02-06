@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -28,17 +28,22 @@ class UserListing extends Component {
   }
 
   render() {
-    
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
           {
             this.state.userListings.map(listing => (
-              <Text 
-                key={listing.id}
-                onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
-                {listing.name}{'\n'}
-              </Text>
+
+                <Text
+                  key={listing.id}
+                  onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
+                  {listing.name}{'\n'}
+                </Text>
+                // <Button
+                //   key={listing.id}
+                //   onPress={() => this.props.navigation.navigate('Listing', { id: listing.id })}/>
+
             ))
           }
         </Card>
@@ -48,7 +53,7 @@ class UserListing extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#e1e8e6'

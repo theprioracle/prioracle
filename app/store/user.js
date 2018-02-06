@@ -30,7 +30,7 @@ export const me = () =>
     axios.get(dbUrl + '/auth/me')
       .then(res =>
         dispatch(getUser(res.data || defaultUser)))
-      .catch(err => console.log(err))
+      .catch(err => console.error(err));
 
 export const auth = (email, password, method, navigation) =>
    dispatch => {
@@ -50,7 +50,7 @@ export const signup = (email, password, navigation, firstName, lastName) =>
        dispatch(getUser(res.data))
      })
      .then(() => navigation.navigate('Intro'))
-     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
 
  }
 
@@ -61,9 +61,9 @@ export const logout = (navigation) =>
         dispatch(removeUser());
       })
       .then(() => {
-        navigation.navigate('Main')
+        navigation.navigate('Main');
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
     }
 /**
  * REDUCER
