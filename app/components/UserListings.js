@@ -83,7 +83,7 @@ class UserListing extends Component {
     
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
+        <Card titleStyle={{ color: 'red' }} title={`Listings for ${this.props.user && this.props.user.fullName}`}>
           <FlatList
             data={this.state.userListings}
             renderItem={this.renderItem}

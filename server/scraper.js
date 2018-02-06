@@ -13,6 +13,7 @@ const OpHelper = new OperationHelper({
 async function scrapePrice(keyword, condition) {
 
   let avgPrice = 0, count = 0, min = 0, max = 0, mean = 0;
+  let price = 0;
 
   let response = await OpHelper.execute('ItemSearch', {
     'SearchIndex': 'All',
@@ -23,7 +24,13 @@ async function scrapePrice(keyword, condition) {
 
     let tempData = response.result.ItemSearchResponse.Items.Item;
     tempData.forEach(function(value, index) {
-      let price = +value.OfferSummary.LowestNewPrice.Amount;
+      if (value.OfferSummary.LowestNewPrice)
+        price = +value.OfferSummary.LowestNewPrice.Amount;
+      else if (value.OfferSummary.LowestUsedPrice)
+        price = +value.OfferSummary.LowestUsedPrice.Amount;
+      else
+        price = +value.OfferSummary.LowestRefurbishedPrice.Amount;
+
       if(!index)
         min = price;
       if( price > max )
