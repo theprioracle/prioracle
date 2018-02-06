@@ -1,3 +1,0 @@
-process.env.AMAZON_API_SECRET = 'TyKAY0qkNCVfc1UmvhAQoL3N7Tpsu1YXlEvuNfK8';
-process.env.AMAZON_AWS_ID = 'AKIAJVKS4SHSLFGXRFFA';
-process.env.AMAZON_ASSOCIATE_ID = 'krisp1984-20';
