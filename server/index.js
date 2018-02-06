@@ -11,8 +11,7 @@ const passport = require('koa-passport');
 const session = require('koa-session');
 
 module.exports = app;
-
-if (process.env.NODE_ENV !== 'production') require('../secrets');
+//if (process.env.NODE_ENV !== 'production') require('../secret');
 
 /**
  * In your development environment, you can keep all of your

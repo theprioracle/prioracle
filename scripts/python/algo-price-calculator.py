@@ -17,6 +17,7 @@ model = pickle.load( open(model_path, 'rb') )
 ## Connect to the database
 conn = psycopg2.connect('dbname=prioracle')
 
+
 ## Open a cursor to perform database operations
 cur = conn.cursor()
 
