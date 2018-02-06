@@ -10,6 +10,7 @@ module.exports = router;
 let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
 let runPy = new Promise((resolve, reject) => {
+  console.log("runPy initializing");
   const pyprog = spawn(
     'python', 
     [path.resolve('scripts/python/algo-price-calculator.py')]
@@ -55,10 +56,10 @@ router.post('/', async (ctx) => {
 
   const pythonOutput = await runPy.then((fromRunpy) => {
     return fromRunpy.toString();
-  })
+  }, (error) => console.log("runPy error: ", error));
 
   let price = await Valuation.create({
-    algoPrice: 2 * pythonOutput,
+    algoPrice: pythonOutput,
     scraperPrice: scraperPrice.mean
   });
 

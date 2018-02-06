@@ -30,7 +30,7 @@
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js",
     "db": "node server/index.js",
-    "seed": "node script/seed.js"
+    "seed": "node scripts/seed.js"
   },
   "jest": {
     "preset": "jest-expo"
