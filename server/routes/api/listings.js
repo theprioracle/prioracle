@@ -58,21 +58,21 @@ router.post('/', async (ctx) => {
   })
 
   let price = await Valuation.create({
-    algoPrice: 2 * pythonOutput,
+    algoPrice: pythonOutput,
     scraperPrice: scraperPrice.mean
   });
 
-  let listing = await Listing.findOrCreate({
+  let [listing] = await Listing.findOrCreate({
     where: ctx.request.body.listing
   });
-  price = await price.setListing(listing[0]);
+  price = await price.setListing(listing);
   listing = await Listing.findOrCreate({
     where: ctx.request.body.listing,
     include: [{model: Valuation}]
   });
   if (user) {
-    await userListings.push(listing[0]);
-    updatedListings = await userListings.map(listing => Number(listing.id));
+    await userListings.push(listing);
+    updatedListings = await userListings.map(userListing => Number(userListing.id));
     await user.setListings(updatedListings);
   }
   ctx.body = listing;
