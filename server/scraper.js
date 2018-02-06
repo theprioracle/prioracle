@@ -1,9 +1,9 @@
 const {OperationHelper} = require('apac');
 
 const OpHelper = new OperationHelper({
-  awsId: 'AKIAJVKS4SHSLFGXRFFA',
-  awsSecret: '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',
-  assocId: 'krisp1984-20',
+  awsId: process.env.AMAZON_AWS_ID,
+  awsSecret: process.env.AMAZON_API_SECRET,
+  assocId: AMAZON_ASSOCIATE_ID,
   locale: 'US'
 });
 
