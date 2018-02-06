@@ -11,8 +11,8 @@ let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand',
 
 let runPy = new Promise((resolve, reject) => {
   const pyprog = spawn(
-    'python',
-    ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
+    'python', 
+    [path.resolve('scripts/python/algo-price-calculator.py')]
   );
   pyprog.stdout.on('data', (data) => {
     resolve(data);
@@ -43,27 +43,6 @@ router.get('/:id', async (ctx) => {
     include: [{ model: Valuation, attributes: ['metaPrice', 'algoPrice', 'scraperPrice', 'soldPrice', 'createdAt']}, { model: User, attributes: ['email', 'firstName', 'lastName']}],
     attributes: attributes
   })
-})
-
-router.put('/:id', async (ctx) => {
-  let listing = await Listing.findOne({
-    where: {
-      id: ctx.params.id
-    },
-    include: [{model: Valuation}]
-  });
-  listing = await listing.update(
-    ctx.request.body
-  )
-  prices = await listing.getValuations()
-
-  // we can then update our most recent price instance for this listing
-  let price = await prices[prices.length-1].update({
-    // these values are hard-coded now but should come from our algorithm/scraper
-    algoPrice: 10,
-    scraperPrice: 14
-  })
-  ctx.body = listing;
 })
 
 router.post('/', async (ctx) => {
