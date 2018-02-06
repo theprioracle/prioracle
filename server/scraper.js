@@ -30,7 +30,7 @@ async function scrapePrice(keyword, condition) {
       avgPrice += price;
       count++;
     });
-    mean = Math.round(avgPrice/count)/100;
+    mean = Math.round(avgPrice/count);
     if(condition === "Like New")
       mean = (mean*9)/10;
     else if(condition === "Good")
@@ -41,8 +41,8 @@ async function scrapePrice(keyword, condition) {
       mean = (mean*6)/10;
 
     return {
-      min:  min/100,
-      max: max/100,
+      min:  min,
+      max: max,
       mean
     };
 
