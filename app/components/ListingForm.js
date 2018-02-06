@@ -78,13 +78,13 @@ class ListingForm extends Component {
           style={styles.container}
           behavior='padding' >
 
-          <Card title='Add a New Listing' >
+          <Card titleStyle={{ color: 'red' }} title='Add a New Listing' >
             <Text style={{color: 'red'}}>{'\t'}* = required</Text>
             {/* PRODUCT NAME FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Name* ({`${this.state.productName.length}`}/40)</FormLabel>
             <FormInput
               inputStyle={styles.inputText}
-              onChangeText={text => this.setState({productName: text})} />
+              onChangeText={text => this.setState({productName: text})}/>
 
             {/* PRODUCT BRAND FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Brand</FormLabel>

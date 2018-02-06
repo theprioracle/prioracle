@@ -38,7 +38,7 @@ export const auth = (email, password, method, navigation) =>
       .then(res => {
         dispatch(getUser(res.data))
       })
-      .then(() => navigation.navigate('Intro'))
+      .then(() => navigation.navigate('UserHome'))
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
   }
