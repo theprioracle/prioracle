@@ -30,6 +30,7 @@
     "ios": "react-native-scripts ios",
     "test": "node node_modules/jest/bin/jest.js",
     "db": "node server/index.js",
+    "start-dev": "NODE_ENV='development' node server/index.js",
     "seed": "node script/seed.js"
   },
   "jest": {
