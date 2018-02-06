@@ -12,6 +12,8 @@ const session = require('koa-session');
 
 module.exports = app;
 
+if (process.env.NODE_ENV !== 'production') require('../secrets');
+
 /**
  * In your development environment, you can keep all of your
  * app's secret API keys in a file called `secrets.js`, in your project

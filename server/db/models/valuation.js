@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
+const algoPriceWeight = 0.5;
+
 const Valuation = db.define('valuation', {
   algoPrice: {
     type: Sequelize.INTEGER,
@@ -13,8 +15,11 @@ const Valuation = db.define('valuation', {
   },
   metaPrice: {
     type: Sequelize.VIRTUAL,
-    get() {
-      return (this.getDataValue('scraperPrice') + this.getDataValue('algoPrice')) / 2;
+    get() {     
+      return Math.round(
+        algoPriceWeight * this.getDataValue('algoPrice') 
+        + (1 - algoPriceWeight) * this.getDataValue('scraperPrice')
+      );
     }
   }
 });
