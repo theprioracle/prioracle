@@ -56,7 +56,7 @@ class Login extends Component {
   }
 
   handleSignupButtonPress() {
-    this.props.navigation.navigate('Listing', { id: 1 });
+    this.props.navigation.navigate('Signup');
   }
 
   render() {

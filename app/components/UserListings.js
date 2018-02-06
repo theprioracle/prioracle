@@ -34,15 +34,16 @@ class UserListing extends Component {
         <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
           {
             this.state.userListings.map(listing => (
-
+              <Card key={'card' + listing.id}>
                 <Text
-                  key={listing.id}
+                  key={'text' + listing.id}
                   onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
                   {listing.name}{'\n'}
                 </Text>
-                // <Button
-                //   key={listing.id}
-                //   onPress={() => this.props.navigation.navigate('Listing', { id: listing.id })}/>
+                <Button
+                  key={'button' + listing.id}
+                  onPress={() => this.props.navigation.navigate('Listing', { id: listing.id })}/>
+              </Card>
 
             ))
           }
