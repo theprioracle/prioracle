@@ -80,13 +80,13 @@ class Login extends Component {
         <Text>{'\n'}</Text>
         <Button
           title='Log In'
-          icon={{ name: 'hot-tub' }}
+          icon={{ name: 'hot-tub', size: 20 }}
           raised={true}
           onPress={() => this.handleLoginButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'
-          icon={{ name: 'add' }}
+          icon={{ name: 'add', size: 20 }}
           raised={true}
           onPress={() => this.handleSignupButtonPress()} />
       </KeyboardAvoidingView>

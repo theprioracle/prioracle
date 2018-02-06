@@ -47,7 +47,10 @@ class ProductAnalysis extends Component {
         behavior='padding' >
         <Card titleStyle={{color: 'red'}} title={`Pricing analysis for ${this.state.listing && this.state.listing.name}`} >
           <Text>{'\n'}Prioracle has made a decision - a fair price for your product to sell at is ${`${valuations && Math.round( 0.01 * valuations[valuations.length - 1].metaPrice )}`}. You may modify the price below if you wish.{'\n'}</Text>
-          <FormLabel labelStyle={styles.formLabel}>Suggested Price (USD)</FormLabel>
+          <FormLabel 
+            labelStyle={styles.formLabel}>
+            Suggested Price (USD)
+          </FormLabel>
           <FormInput
             inputStyle={styles.inputText}
             textAlign={'center'}
