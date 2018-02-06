@@ -33,7 +33,7 @@ class ProductAnalysis extends Component {
       .then(res => res.data)
       .then(listing => this.setState({
         listing,
-        selectedPrice: listing.valuations[listing.valuations.length - 1].metaPrice
+        selectedPrice: Math.round( 0.01 * listing.valuations[listing.valuations.length - 1].metaPrice )
       }))
       .catch(error => console.log('Error:', error));
   }
@@ -46,8 +46,8 @@ class ProductAnalysis extends Component {
         style={styles.container}
         behavior='padding' >
         <Card title={`Pricing analysis for ${this.state.listing && this.state.listing.name}`} >
-          <Text>{'\n'}Prioracle has made a decision - a fair price for your product to sell at is ${`${valuations && valuations[valuations.length - 1].metaPrice}`} and the scraper price is {`${valuations && valuations[valuations.length - 1].scraperPrice}`}. You may modify the price below if you wish.{'\n'}</Text>
-          <FormLabel labelStyle={styles.formLabel}>Suggested Price</FormLabel>
+          <Text>{'\n'}Prioracle has made a decision - a fair price for your product to sell at is ${`${valuations && Math.round( 0.01 * valuations[valuations.length - 1].metaPrice )}`}. You may modify the price below if you wish.{'\n'}</Text>
+          <FormLabel labelStyle={styles.formLabel}>Suggested Price (USD)</FormLabel>
           <FormInput
             inputStyle={styles.inputText}
             textAlign={'center'}

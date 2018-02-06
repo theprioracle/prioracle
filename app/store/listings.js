@@ -53,7 +53,7 @@ export const addListing = function(listing, navigation) {
         dispatch(addListingAction(createdListing[0]));
       })
       .then(() => navigation.navigate('Analysis', { id: newListing.id }))
-      .catch(err => console.log(err));
+      .catch(err => navigation.navigate('Error'));
   }
 }
 

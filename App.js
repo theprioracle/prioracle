@@ -16,6 +16,7 @@ import UserListings from './app/components/UserListings';
 import UserSettings from './app/components/UserSettings';
 import Signup from './app/components/Signup';
 import Intro from './app/components/Intro';
+import ListingError from './app/components/ListingError';
 
 // Use this link to access our backend!
 export const dbUrl = 'http://172.16.23.244:8080';
@@ -106,5 +107,12 @@ export const RootNavigator = StackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  Error: {
+    screen: ListingError,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Error',
+      header: <AppHeader navigation={navigation} />
+    })
   }
 });
