@@ -3,10 +3,10 @@ const {OperationHelper} = require('apac');
 const OpHelper = new OperationHelper({
   awsId: process.env.AMAZON_AWS_ID,
   awsSecret: process.env.AMAZON_API_SECRET,
-  assocId: AMAZON_ASSOCIATE_ID,
+  assocId: process.env.AMAZON_ASSOCIATE_ID,
   locale: 'US'
 });
-
+console.log(process.env);
 async function scrapePrice(keyword, condition) {
 
   let avgPrice = 0, count = 0, min = 0, max = 0, mean = 0;

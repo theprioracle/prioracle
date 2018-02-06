@@ -11,8 +11,9 @@ const passport = require('koa-passport');
 const session = require('koa-session');
 
 module.exports = app;
-
-if (process.env.NODE_ENV !== 'production') require('../secrets');
+console.log("hello");
+if (process.env.NODE_ENV !== 'production') require('../secret');
+console.log('secrets run');
 
 /**
  * In your development environment, you can keep all of your
@@ -74,6 +75,7 @@ const syncDb = () => db.sync();
 // It will evaluate false when this module is required by another module - for example,
 // if we wanted to require our app in a test spec
 if (require.main === module) {
+    console.log("THIS IS RANDYS STUFF!");
     syncDb()
     .then(createApp)
     .then(startListening);
