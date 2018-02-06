@@ -9,6 +9,7 @@ mercari.ipynb
 model-old.pkl
 prioracle.ipynb
 ./scripts/python/algo-price-calculator-old.py
+secret.js
 
 # expo
 .expo/
