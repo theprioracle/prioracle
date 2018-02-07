@@ -5,11 +5,11 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-native';
 import { Button, FormLabel, FormInput } from 'react-native-elements';
 import { StackNavigator, NavigationActions } from 'react-navigation';
-
-import * as firebase from "firebase";
 import {auth} from '../store';
 import { connect } from 'react-redux';
 import Expo from 'expo';
+import axios from 'axios';
+import { dbUrl } from '../../App';
 
 
 
@@ -69,7 +69,15 @@ class Login extends Component {
 
   handleGoogleButtonPress() {
     this.signInWithGoogleAsync()
-    .then(code => console.log('code', code));
+    .then(response => {
+      let 
+        email = response.user.email,
+        firstName = response.user.givenName,
+        lastName = response.user.familyName,
+        googleId  = response.user.id;     
+      console.log(email, firstName, lastName, googleId)
+      })
+    .catch(err => console.error(err))
   }
 
   render() {

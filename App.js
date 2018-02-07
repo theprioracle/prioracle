@@ -21,7 +21,7 @@ import ListingError from './app/components/ListingError';
 
 
 // Use this link to access our backend!
-export const dbUrl = 'https://obscure-wave-65872.herokuapp.com';
+export const dbUrl = 'http://localhost:8080';
 
 export default class App extends Component {
   constructor(props) {
@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
 export const RootNavigator = StackNavigator({
   Main: {
     screen: Login,
-    path: '/login',
     navigationOptions: {
       header: null
     }
@@ -71,7 +70,6 @@ export const RootNavigator = StackNavigator({
   },
   UserHome: {
     screen: UserHome,
-    path: '/user',
     navigationOptions: ({ navigation }) => ({
       title: 'Home',
       header: <AppHeader navigation={navigation} />

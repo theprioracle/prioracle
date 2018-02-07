@@ -25,29 +25,44 @@ module.exports = router
 
 // } else {
 
-  const googleConfig = {
-    clientID: '944065793816-bfait7d7ffa2m7l416jfpq7ubs96f34o.apps.googleusercontent.com',
-    clientSecret: 'jHAy0z6-R33kGvdADCdbp6Gk',
-    callbackURL: 'http://localhost:8080/auth/google/callback'
-  }
+  // const googleConfig = {
+  //   clientID: '944065793816-bfait7d7ffa2m7l416jfpq7ubs96f34o.apps.googleusercontent.com',
+  //   clientSecret: 'jHAy0z6-R33kGvdADCdbp6Gk',
+  //   callbackURL: 'http://localhost:8080/auth/google/callback'
+  // }
 
 
 
-  const strategy = new GoogleStrategy(googleConfig, (token, refreshToken, profile, done) => {
-    const googleId = profile.id
-    const [firstName, lastName] = profile.displayName.split(' ')
-    const email = profile.emails[0].value
+  // const strategy = new GoogleStrategy(googleConfig, (token, refreshToken, profile, done) => {
+  //   const googleId = profile.id
+  //   const [firstName, lastName] = profile.displayName.split(' ')
+  //   const email = profile.emails[0].value
 
-    User.find({where: {googleId}})
-      .then(foundUser => (foundUser
-        ? done(null, foundUser)
-        : User.create({firstName, lastName, email, googleId})
-          .then(createdUser => done(null, createdUser))
-      ))
-      .catch(done)
+  //   User.find({where: {googleId}})
+  //     .then(foundUser => (foundUser
+  //       ? done(null, foundUser)
+  //       : User.create({firstName, lastName, email, googleId})
+  //         .then(createdUser => done(null, createdUser))
+  //     ))
+  //     .catch(done)
+  // })
+
+  // passport.use(strategy)
+
+  router.post('/', async (ctx) => {
+    console.log(ctx.request.body)
+    let [user] = await User.findOrCreate({
+      where: {
+        email: ctx.request.body.email,
+        firstName: ctx.request.body.firstName,
+        lastName: ctx.request.body.lastName,
+        googleId: ctx.request.body.googleId
+      }
+    })
+    await ctx.login(user)
+    console.log(ctx.state.user)
+    ctx.body = user;
   })
-
-  passport.use(strategy)
 
   router.get('/', passport.authenticate('google', {scope: 'email'}))
 
