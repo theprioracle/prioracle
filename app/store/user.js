@@ -43,11 +43,12 @@ export const auth = (email, password, method, navigation) =>
 
   }
 
+
 export const signup = (email, password, navigation, firstName, lastName) =>
   dispatch => {
     axios.post(dbUrl + '/auth/signup', { email, password, firstName, lastName })
      .then(res => {
-       dispatch(getUser(res.data))
+       dispatch(getUser(res.data));
      })
      .then(() => navigation.navigate('Intro'))
      .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));

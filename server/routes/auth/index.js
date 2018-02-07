@@ -1,6 +1,9 @@
 const Router = require('koa-router');
 const router = new Router();
 const {User} = require('../../db/models')
+const googleRoutes = require('./google')
+
+router.use('/google', googleRoutes.routes());
 
 router.post('/login', async (ctx) => {
   // Look for user by email address

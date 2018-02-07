@@ -9,6 +9,8 @@ import { StackNavigator, NavigationActions } from 'react-navigation';
 import * as firebase from "firebase";
 import {auth} from '../store';
 import { connect } from 'react-redux';
+import Expo from 'expo';
+
 
 
 class Login extends Component {
@@ -24,20 +26,26 @@ class Login extends Component {
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
     this.handleLoginButtonPress = this.handleLoginButtonPress.bind(this);
     this.handleSignupButtonPress = this.handleSignupButtonPress.bind(this);
+    this.handleGoogleButtonPress = this.handleGoogleButtonPress.bind(this);
+
   }
 
 
-  async signup(email, pass) {
+  async signInWithGoogleAsync() {
     try {
-        await firebase.auth()
-          .createUserWithEmailAndPassword(email, pass);
+      const result = await Expo.Google.logInAsync({
+        androidClientId: '944065793816-bd6h1g49g6nrebc09lt4p36g4pl397jl.apps.googleusercontent.com',
+        iosClientId: '944065793816-mihnibeji24042fln57o5n3frhss4jlj.apps.googleusercontent.com',
+        scopes: ['profile', 'email'],
+      });
 
-        console.log("Creating a new account for ", email);
-
-        this.props.navigation.navigate('ListingForm');
-
-    } catch (error) {
-        console.log(error.toString())
+      if (result.type === 'success') {
+        return result;
+      } else {
+        return {cancelled: true};
+      }
+    } catch(e) {
+      return {error: true};
     }
   }
 
@@ -57,6 +65,11 @@ class Login extends Component {
 
   handleSignupButtonPress() {
     this.props.navigation.navigate('Signup');
+  }
+
+  handleGoogleButtonPress() {
+    this.signInWithGoogleAsync()
+    .then(code => console.log('code', code));
   }
 
   render() {
@@ -85,6 +98,12 @@ class Login extends Component {
           icon={{ name: 'hot-tub', size: 20 }}
           raised={true}
           onPress={() => this.handleLoginButtonPress()} />
+        <Text>{'\n'}</Text>
+        <Button
+          title='Log In with Google'
+          icon={{ name: 'hot-tub' }}
+          raised={true}
+          onPress={() => this.handleGoogleButtonPress()} />
         <Text>{'\n'}</Text>
         <Button
           title='Sign Up'
