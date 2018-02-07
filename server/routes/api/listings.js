@@ -10,9 +10,10 @@ module.exports = router;
 let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand', 'status', 'sellerShips'];
 
 let runPy = new Promise((resolve, reject) => {
+  console.log("runPy initializing");
   const pyprog = spawn(
-    'python',
-    ['/home/asalas/fullstack-academy/immersive/senior-phase/prioracle/scripts/python/algo-price-calculator.py']
+    'python', 
+    [path.resolve('scripts/python/algo-price-calculator.py')]
   );
   pyprog.stdout.on('data', (data) => {
     resolve(data);
@@ -45,27 +46,6 @@ router.get('/:id', async (ctx) => {
   })
 })
 
-router.put('/:id', async (ctx) => {
-  let listing = await Listing.findOne({
-    where: {
-      id: ctx.params.id
-    },
-    include: [{model: Valuation}]
-  });
-  listing = await listing.update(
-    ctx.request.body
-  )
-  prices = await listing.getValuations()
-
-  // we can then update our most recent price instance for this listing
-  let price = await prices[prices.length-1].update({
-    // these values are hard-coded now but should come from our algorithm/scraper
-    algoPrice: 10,
-    scraperPrice: 14
-  })
-  ctx.body = listing;
-})
-
 router.post('/', async (ctx) => {
   let user = await User.findById(Number(ctx.request.body.userId));
   let userListings = await user.getListings();
@@ -76,10 +56,10 @@ router.post('/', async (ctx) => {
 
   const pythonOutput = await runPy.then((fromRunpy) => {
     return fromRunpy.toString();
-  })
+  }, (error) => console.log("runPy error: ", error));
 
   let price = await Valuation.create({
-    algoPrice: 2 * pythonOutput,
+    algoPrice: pythonOutput,
     scraperPrice: scraperPrice.mean
   });
 
@@ -93,7 +73,7 @@ router.post('/', async (ctx) => {
   });
   if (user) {
     await userListings.push(listing[0]);
-    updatedListings = await userListings.map(listing => Number(listing.id));
+    updatedListings = await userListings.map(userListing => Number(userListing.id));
     await user.setListings(updatedListings);
   }
   ctx.body = listing;

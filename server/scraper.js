@@ -1,6 +1,9 @@
 const {OperationHelper} = require('apac');
 
 const OpHelper = new OperationHelper({
+  // awsId: process.env.AMAZON_AWS_ID,
+  // awsSecret: process.env.AMAZON_API_SECRET,
+  // assocId: process.env.AMAZON_ASSOCIATE_ID,
   awsId: 'AKIAJVKS4SHSLFGXRFFA',
   awsSecret: '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',
   assocId: 'krisp1984-20',
@@ -10,6 +13,7 @@ const OpHelper = new OperationHelper({
 async function scrapePrice(keyword, condition) {
 
   let avgPrice = 0, count = 0, min = 0, max = 0, mean = 0;
+  let price = 0;
 
   let response = await OpHelper.execute('ItemSearch', {
     'SearchIndex': 'All',
@@ -20,7 +24,13 @@ async function scrapePrice(keyword, condition) {
 
     let tempData = response.result.ItemSearchResponse.Items.Item;
     tempData.forEach(function(value, index) {
-      let price = +value.OfferSummary.LowestNewPrice.Amount;
+      if (value.OfferSummary.LowestNewPrice)
+        price = +value.OfferSummary.LowestNewPrice.Amount;
+      else if (value.OfferSummary.LowestUsedPrice)
+        price = +value.OfferSummary.LowestUsedPrice.Amount;
+      else
+        price = +value.OfferSummary.LowestRefurbishedPrice.Amount;
+
       if(!index)
         min = price;
       if( price > max )
@@ -30,7 +40,7 @@ async function scrapePrice(keyword, condition) {
       avgPrice += price;
       count++;
     });
-    mean = Math.round(avgPrice/count)/100;
+    mean = Math.round(avgPrice/count);
     if(condition === "Like New")
       mean = (mean*9)/10;
     else if(condition === "Good")
@@ -41,8 +51,8 @@ async function scrapePrice(keyword, condition) {
       mean = (mean*6)/10;
 
     return {
-      min:  min/100,
-      max: max/100,
+      min:  min,
+      max: max,
       mean
     };
 

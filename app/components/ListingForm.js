@@ -14,7 +14,7 @@ import { addListing } from '../store';
 const conditionButtons = ['New', 'Like New', 'Good', 'Fair', 'Poor'];
 
 // Buttons for selecting product shipping handler in ButtonGroup
-const shippingButtons = ['Buyer', 'Seller'];
+const shippingButtons = ['Seller', 'Buyer'];
 
 class ListingForm extends Component {
   constructor(props) {
@@ -78,40 +78,38 @@ class ListingForm extends Component {
           style={styles.container}
           behavior='padding' >
 
-          <Card title='Add a New Listing' >
+          <Card titleStyle={{ color: 'red' }} title='Add a New Listing' >
             <Text style={{color: 'red'}}>{'\t'}* = required</Text>
             {/* PRODUCT NAME FIELD */}
-            <FormLabel labelStyle={styles.formLabel}>Product Name* </FormLabel>
+            <FormLabel labelStyle={styles.formLabel}>Product Name* ({`${this.state.productName.length}`}/40)</FormLabel>
             <FormInput
               inputStyle={styles.inputText}
-              textAlign={'center'}
-              onChangeText={text => this.setState({productName: text})} />
+              onChangeText={text => this.setState({productName: text})}/>
 
             {/* PRODUCT BRAND FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Brand</FormLabel>
             <FormInput
               inputStyle={styles.inputText}
-              textAlign={'center'}
               onChangeText={text => this.setState({productBrand: text})} />
 
             {/* PRODUCT DESCRIPTION FIELD */}
-            <FormLabel labelStyle={styles.formLabel}>Product Description</FormLabel>
+            <FormLabel labelStyle={styles.formLabel}>Product Description ({`${this.state.productDescription.length}`}/400)</FormLabel>
             <FormInput
               containerStyle={styles.inputContainer}
               inputStyle={styles.inputText}
-              textAlign={'center'}
               multiline={true}
+              numberOfLines={3}
+
               onChangeText={text => this.setState({productDescription: text})} />
             
             {/* PRODUCT CATEGORY FIELD */}
             <FormLabel labelStyle={styles.formLabel}>Product Category (/-separated)</FormLabel>
             <FormInput
               inputStyle={styles.inputText}
-              textAlign={'center'}
               onChangeText={text => this.setState({productCategory: text})} />
 
             {/* PRODUCT CONDITION FIELD */}
-            <FormLabel labelStyle={styles.formLabel}>Product Condition</FormLabel>
+            <FormLabel labelStyle={styles.formLabel}>Product Condition*</FormLabel>
             <ButtonGroup
               containerStyle={styles.buttonGroup}
               buttons={conditionButtons}
@@ -160,9 +158,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center'
     },
     inputText: {
-      flex: 1,
       color: 'black',
-      justifyContent: 'center'
+      textAlign: 'left'
     },
     buttonGroup: {
       height: 60

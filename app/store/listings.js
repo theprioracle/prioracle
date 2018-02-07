@@ -8,6 +8,7 @@ import { dbUrl } from '../../App';
  */
 const GET_LISTINGS = 'GET_LISTINGS';
 const ADD_LISTING = 'ADD_LISTING';
+const DELETE_LISTING = 'DELETE_LISTING';
 
 /**
  * INITIAL STATE
@@ -23,6 +24,10 @@ const getListingsAction = (listings) => (
 
 const addListingAction = (listing) => (
   {type: ADD_LISTING, listing}
+);
+
+const deleteListingAction = (listing) => (
+  {type: DELETE_LISTING, listing}
 );
 
 /**
@@ -48,6 +53,15 @@ export const addListing = function(listing, navigation) {
         dispatch(addListingAction(createdListing[0]));
       })
       .then(() => navigation.navigate('Analysis', { id: newListing.id }))
+      .catch(err => navigation.navigate('Error'));
+  }
+}
+
+export const deleteListing = function(listingId) {
+  return function thunk(dispatch) {
+    return axios.delete(dbUrl + '/api/listings/' + listingId)
+      .then(res => res.data)
+      .then(deletedListing => dispatch(deleteListingAction(listing)))
       .catch(err => console.log(err));
   }
 }
@@ -61,6 +75,10 @@ export default function (state = defaultListings, action) {
       return action.listings;
     case ADD_LISTING:
       return [...state, action.listing];
+    case DELETE_LISTING:
+      return state.filter((listing) => {
+        return listing.id !== action.listing.id
+      });
     default:
       return state;
   }

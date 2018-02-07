@@ -1,14 +1,22 @@
+import os
+import sys
+
 import pickle
 import psycopg2
 import numpy as np
-import sys
+
 
 ## Load vectorizer and model
-vectorizer = pickle.load( open('//Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/vectorizer.pkl', 'rb') )
-model = pickle.load( open('/Users/randytsao/Documents/Fullstack/Projects/prioracle-app/scripts/python/model.pkl', 'rb') )
+cwd = os.getcwd()
+vectorizer_path = os.path.join(cwd, 'vectorizer.pkl')
+model_path = os.path.join(cwd, 'model.pkl')
+
+vectorizer = pickle.load( open(vectorizer_path, 'rb') )
+model = pickle.load( open(model_path, 'rb') )
 
 ## Connect to the database
 conn = psycopg2.connect('dbname=prioracle')
+
 
 ## Open a cursor to perform database operations
 cur = conn.cursor()
@@ -47,7 +55,7 @@ X_vect = vectorizer.transform(X)
 algo_price = np.round( np.expm1(model.predict(X_vect)[0]) )
 algo_price_in_cents = int(algo_price * 100)
 
-## Send data back to node
+## Send data back to NodeJS
 print(algo_price_in_cents)
 sys.stdout.flush()
 

@@ -2,21 +2,70 @@
 // This view displays a user's listings.
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { StyleSheet, Text, FlatList, ScrollView, View } from 'react-native';
+import { Button, Card, Divider, List, ListItem } from 'react-native-elements';
 import { StackNavigator } from 'react-navigation';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { dbUrl } from '../../App';
+import { deleteListing } from '../store/index';
 
-class UserListing extends Component {
+// Subcomponent for rendering a single listing
+class UserListingItem extends Component {
   constructor(props) {
     super(props);
 
+    this.handleListingClick = this.handleListingClick.bind(this);
+    this.handleListingDelete = this.handleListingDelete.bind(this);
+    this.handleListingData = this.handleListingData.bind(this);
+
+  }
+
+  handleListingClick() {
+    this.props.navigation.navigate('Analysis', { id: this.props.itemId });
+  }
+  handleListingData() {
+    this.props.navigation.navigate('Listing', { id: this.props.itemId });
+  }
+
+  handleListingDelete() {
+    this.props.deleteUserListing(this.props.itemId);
+  }
+
+  render() {
+    return (
+      <View style={styles.listingItem} >
+        <Text
+          style={styles.itemText}
+          onPress={this.handleListingClick}
+          adjustsFontSizeToFit={true} >
+          {this.props.title}
+        </Text>
+        <Button
+            containerViewStyle={styles.buttonContainer}
+            buttonStyle={styles.buttonStyle}
+            icon={{ name: 'delete', color: 'red', size: 26, alignItems: 'right' }}
+            onPress={this.handleListingDelete} />
+        <Button
+            containerViewStyle={styles.buttonContainer}
+            buttonStyle={styles.buttonStyle}
+            icon={{ name: 'line-graph', type: 'entypo', color: 'green', size: 26}}
+            onPress={this.handleListingData} />
+      </View>
+    )
+  }
+}
+
+// UserListing displays a list of all of the logged-in user's listings
+class UserListing extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       userListings: []
     };
+
+    this.renderItem = this.renderItem.bind(this);
   }
 
   componentDidMount() {
@@ -27,26 +76,28 @@ class UserListing extends Component {
       .catch(error => console.log(error));
   }
 
+  renderItem({item}) {
+    return (
+      <UserListingItem
+        key={item.id}
+        title={item.name}
+        itemId={item.id}
+        navigation={this.props.navigation}
+        deleteUserListing={this.props.deleteUserListing}
+      />
+    );
+  }
+
   render() {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Card title={`Listings for ${this.props.user && this.props.user.fullName}`}>
-          {
-            this.state.userListings.map(listing => (
-              <Card key={'card' + listing.id}>
-                <Text
-                  key={'text' + listing.id}
-                  onPress={() => this.props.navigation.navigate('Analysis', { id: listing.id })} >
-                  {listing.name}{'\n'}
-                </Text>
-                <Button
-                  key={'button' + listing.id}
-                  onPress={() => this.props.navigation.navigate('Listing', { id: listing.id })}/>
-              </Card>
-
-            ))
-          }
+        <Card titleStyle={{ color: 'red' }} title={`Listings for ${this.props.user && this.props.user.fullName}`}>
+          <FlatList
+            data={this.state.userListings}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => index}
+          />
         </Card>
       </ScrollView>
     );
@@ -58,6 +109,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#e1e8e6'
+  },
+  listingItem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
+  itemText: {
+    fontSize: 16,
+    flex: 4
+  },
+  buttonContainer: {
+
+    backgroundColor: 'red'
+  },
+  buttonStyle: {
+    backgroundColor: 'white'
   }
 });
 
@@ -67,4 +135,12 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(UserListing);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deleteUserListing(listingId) {
+      dispatch(deleteListing(listingId));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserListing);

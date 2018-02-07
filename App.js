@@ -17,6 +17,7 @@ import UserSettings from './app/components/UserSettings';
 import Signup from './app/components/Signup';
 import Intro from './app/components/Intro';
 import Listing from './app/components/Listing';
+import ListingError from './app/components/ListingError';
 
 
 // Use this link to access our backend!
@@ -116,5 +117,12 @@ export const RootNavigator = StackNavigator({
     navigationOptions: {
       header: null
     }
+  },
+  Error: {
+    screen: ListingError,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Error',
+      header: <AppHeader navigation={navigation} />
+    })
   }
 });
