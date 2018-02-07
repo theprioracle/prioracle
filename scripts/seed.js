@@ -40,15 +40,33 @@ async function seed () {
 
   const prices = await Promise.all([
     Valuation.create({
-      soldPrice: 52
+      soldPrice: 52,
+      algoPrice: 20,
+      scraperPrice: 30
     })
     .then(price => price.setListing(1)),
     Valuation.create({
-      soldPrice: 14
+      soldPrice: 31,
+      algoPrice: 60,
+      scraperPrice: 50
+    })
+    .then(price => price.setListing(1)),
+    Valuation.create({
+      soldPrice: 31,
+      algoPrice: 20,
+      scraperPrice: 10
+    })
+    .then(price => price.setListing(1)),
+    Valuation.create({
+      soldPrice: 14,
+      algoPrice: 40,
+      scraperPrice: 30
     })
     .then(price => price.setListing(2)),
     Valuation.create({
-      soldPrice: 31
+      soldPrice: 31,
+      algoPrice: 20,
+      scraperPrice: 50
     })
     .then(price => price.setListing(3))
   ]);

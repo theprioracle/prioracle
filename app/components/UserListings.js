@@ -18,10 +18,15 @@ class UserListingItem extends Component {
 
     this.handleListingClick = this.handleListingClick.bind(this);
     this.handleListingDelete = this.handleListingDelete.bind(this);
+    this.handleListingData = this.handleListingData.bind(this);
+
   }
 
   handleListingClick() {
     this.props.navigation.navigate('Analysis', { id: this.props.itemId });
+  }
+  handleListingData() {
+    this.props.navigation.navigate('Listing', { id: this.props.itemId });
   }
 
   handleListingDelete() {
@@ -30,18 +35,23 @@ class UserListingItem extends Component {
 
   render() {
     return (
-      <View style={styles.listingItem}>
-        <Text 
+      <View style={styles.listingItem} >
+        <Text
           style={styles.itemText}
           onPress={this.handleListingClick}
           adjustsFontSizeToFit={true} >
           {this.props.title}
         </Text>
         <Button
-          containerViewStyle={styles.buttonContainer}
-          buttonStyle={styles.buttonStyle}
-          icon={{ name: 'delete', color: 'red', size: 26, alignItems: 'right' }}
-          onPress={this.handleListingDelete} />
+            containerViewStyle={styles.buttonContainer}
+            buttonStyle={styles.buttonStyle}
+            icon={{ name: 'delete', color: 'red', size: 26, alignItems: 'right' }}
+            onPress={this.handleListingDelete} />
+        <Button
+            containerViewStyle={styles.buttonContainer}
+            buttonStyle={styles.buttonStyle}
+            icon={{ name: 'line-graph', type: 'entypo', color: 'green', size: 26}}
+            onPress={this.handleListingData} />
       </View>
     )
   }
@@ -51,7 +61,6 @@ class UserListingItem extends Component {
 class UserListing extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       userListings: []
     };
@@ -80,7 +89,7 @@ class UserListing extends Component {
   }
 
   render() {
-    
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Card titleStyle={{ color: 'red' }} title={`Listings for ${this.props.user && this.props.user.fullName}`}>
@@ -96,7 +105,7 @@ class UserListing extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     flex: 1,
     justifyContent: 'flex-start',
     backgroundColor: '#e1e8e6'
@@ -104,13 +113,15 @@ const styles = StyleSheet.create({
   listingItem: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center'
   },
   itemText: {
-    fontSize: 16
+    fontSize: 16,
+    flex: 4
   },
   buttonContainer: {
+
     backgroundColor: 'red'
   },
   buttonStyle: {
