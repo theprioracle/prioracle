@@ -21,7 +21,7 @@ import ListingError from './app/components/ListingError';
 
 
 // Use this link to access our backend!
-export const dbUrl = 'https://pacific-river-74877.herokuapp.com/';
+export const dbUrl = 'https://obscure-wave-65872.herokuapp.com';
 
 export default class App extends Component {
   constructor(props) {
