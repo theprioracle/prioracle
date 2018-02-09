@@ -49,6 +49,7 @@
     "koa-router": "^7.3.0",
     "koa-session": "^5.8.1",
     "koa-static": "^4.0.2",
+    "node-craigslist": "^1.2.2",
     "pg": "^6.4.1",
     "pg-hstore": "^2.3.2",
     "react": "^16.2.0",

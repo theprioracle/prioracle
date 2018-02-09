@@ -3,7 +3,7 @@ const router = new Router();
 const path = require('path')
 const { spawn } = require('child_process');
 const { Listing, Valuation, User } = require('../../db/models');
-const { scrapePrice } = require('../../scraper');
+const { amazonPrice, craigslistPrice  } = require('../../scraper');
 
 module.exports = router;
 
@@ -12,7 +12,7 @@ let attributes = ['id', 'name', 'description', 'category', 'condition', 'brand',
 let runPy = new Promise((resolve, reject) => {
   console.log("runPy initializing");
   const pyprog = spawn(
-    'python', 
+    'python',
     [path.resolve('scripts/python/algo-price-calculator.py')]
   );
   pyprog.stdout.on('data', (data) => {
@@ -52,7 +52,11 @@ router.post('/', async (ctx) => {
   let listingInfo = ctx.request.body.listing;
   let updatedListings = [];
 
-  let scraperPrice = await scrapePrice(listingInfo.name, listingInfo.condition);
+  let scraperPrice1 = await amazonPrice(listingInfo.name, listingInfo.condition);
+
+  let scraperPrice2 = await craigslistPrice(listingInfo.name, listingInfo.condition);
+
+  let finalScraperPrice = (scraperPrice1 + scraperPrice2)/2;
 
   const pythonOutput = await runPy.then((fromRunpy) => {
     return fromRunpy.toString();
@@ -60,7 +64,7 @@ router.post('/', async (ctx) => {
 
   let price = await Valuation.create({
     algoPrice: pythonOutput,
-    scraperPrice: scraperPrice.mean
+    scraperPrice: finalScraperPrice
   });
 
   let listing = await Listing.findOrCreate({
