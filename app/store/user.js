@@ -45,6 +45,7 @@ export const auth = (email, password, method, navigation) =>
 
 export const goog = (email, firstName, lastName, googleId, navigation) =>
   dispatch => {
+    console.log('hits thunk')
     axios.post(dbUrl + '/auth/google', { email, firstName, lastName, googleId })
     .then(res => {
       dispatch(getUser(res.data))
